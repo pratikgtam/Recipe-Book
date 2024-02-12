@@ -81,10 +81,6 @@ class _LoginViewState extends State<LoginView> {
             listener: _listenerLogin,
             listenWhen: _listenWhen,
           ),
-          // BlocListener<AuthCubit, AuthState>(
-          //   listener: _listenerSso,
-          //   listenWhen: _listenWhenSso,
-          // ),
         ],
         child: FormBuilder(
           key: _formKey,
@@ -143,16 +139,6 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 22,
                 ),
-                // const Text(
-                //   'or Login with',
-                //   textAlign: TextAlign.center,
-                //   style: TextStyle(
-                //     fontSize: 13,
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 24,
-                // ),
               ],
             ),
           ),

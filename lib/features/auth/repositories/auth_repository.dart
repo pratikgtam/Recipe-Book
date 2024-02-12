@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:recipe_book/features/auth/services/google_sso.dart';
 
 class AuthRepository {
   AuthRepository();
@@ -24,16 +23,6 @@ class AuthRepository {
 
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
-  }
-
-  Future<String?> googleLogin() async {
-    final OAuthCredential credential = await GoogleSSO.signIn();
-
-    final result = await FirebaseAuth.instance.signInWithCredential(credential);
-
-    final token = await result.user?.getIdToken();
-
-    return token;
   }
 
   Future<void> resetPassword({required String email}) {

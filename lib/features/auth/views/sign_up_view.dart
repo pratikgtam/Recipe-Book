@@ -50,7 +50,6 @@ class _SignUpViewState extends State<SignUpView> {
                     hintText: 'Email',
                     textInputType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
-                    // onSubmitted: (value) => _showCountryPicker(),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
                       FormBuilderValidators.email(),

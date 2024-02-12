@@ -79,32 +79,6 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> googleLogin() async {
-    try {
-      emit(
-        state.copyWith(
-          googleLoginStatus: const Result.loading(),
-        ),
-      );
-      await repository.googleLogin();
-
-      emit(
-        state.copyWith(
-          googleLoginStatus: const Result<void>.success(null),
-        ),
-      );
-    } catch (e, s) {
-      emit(
-        state.copyWith(
-          googleLoginStatus: Result<void>.failure(
-            e,
-            s,
-          ),
-        ),
-      );
-    }
-  }
-
   Future<void> resetPassword({
     required String email,
   }) async {
