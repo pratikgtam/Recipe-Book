@@ -6,7 +6,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_state.dart';
+import 'package:recipe_book/features/auth/views/check_email_view.dart';
 import 'package:recipe_book/shared/app_button.dart';
+import 'package:recipe_book/shared/app_routes.dart';
+import 'package:recipe_book/shared/app_utils.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/text_input.dart';
 
@@ -75,9 +78,9 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
 
   void _listener(BuildContext context, AuthState state) {
     if (state.resetPasswordStatus.succeeded) {
-      // context.pushNamed(RouteNames.checkEmail);
+      AppRoutes(context).push(const CheckEmailView());
     }
-    // AppUtils.handleError(context, state.resetPasswordStatus);
+    AppUtils.handleError(context, state.resetPasswordStatus);
   }
 
   bool _listenWhen(AuthState previous, AuthState current) {

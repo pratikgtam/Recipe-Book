@@ -26,6 +26,11 @@ class AuthCubit extends Cubit<AuthState> {
         email: formValue['email'] as String,
         password: formValue['password'] as String,
       );
+      emit(
+        state.copyWith(
+          signupStatus: const Result<void>.success(null),
+        ),
+      );
     } catch (e, s) {
       emit(
         state.copyWith(

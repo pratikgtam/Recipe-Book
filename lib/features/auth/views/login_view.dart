@@ -6,6 +6,7 @@ import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_state.dart';
 import 'package:recipe_book/features/auth/views/reset_password_view.dart';
 import 'package:recipe_book/features/auth/views/sign_up_view.dart';
+import 'package:recipe_book/features/home/home_view.dart';
 import 'package:recipe_book/shared/app_button.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/app_utils.dart';
@@ -175,50 +176,10 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void _navigateSuccess() {
-    // context.goNamed(RouteNames.home);
+    AppRoutes(context).pushAndRemoveUntil(const HomeView());
   }
 
   bool _listenWhen(AuthState previous, AuthState current) {
     return previous.loginStatus != current.loginStatus;
   }
 }
-
-// class _SsoContainer extends StatelessWidget {
-//   const _SsoContainer({required this.sso});
-//   final Sso sso;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Expanded(
-//       child: GestureDetector(
-//         onTap: () => context.read<AuthCubit>().ssoLogin(sso: sso),
-//         child: Container(
-//           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-//           decoration: ShapeDecoration(
-//             color: const Color(0xFFDEECF2),
-//             shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(500),
-//             ),
-//           ),
-//           child: Image.asset(
-//             _getSsoImage(),
-//             fit: BoxFit.contain,
-//             height: 24,
-//             width: 24,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   String _getSsoImage() {
-//     switch (sso) {
-//       case Sso.google:
-//         return AppAssets.google;
-//       case Sso.facebook:
-//         return AppAssets.facebook;
-//       case Sso.apple:
-//         return AppAssets.apple;
-//     }
-//   }
-// }

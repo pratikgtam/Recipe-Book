@@ -4,7 +4,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_state.dart';
+import 'package:recipe_book/features/home/home_view.dart';
 import 'package:recipe_book/shared/app_button.dart';
+import 'package:recipe_book/shared/app_routes.dart';
+import 'package:recipe_book/shared/app_utils.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/text_input.dart';
 
@@ -104,8 +107,9 @@ class _SignUpViewState extends State<SignUpView> {
 
   void _listener(BuildContext context, AuthState state) {
     if (state.signupStatus.succeeded) {
-      // context.pushNamed(RouteNames.confirmationCode);
+      AppRoutes(context).pushAndRemoveUntil(const HomeView());
     }
+    AppUtils.handleError(context, state.signupStatus);
   }
 
   bool _listenWhen(AuthState previous, AuthState current) {

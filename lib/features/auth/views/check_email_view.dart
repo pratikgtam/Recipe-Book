@@ -17,34 +17,28 @@ class _CheckEmailViewState extends State<CheckEmailView> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      title: 'Check your email',
       body: Column(
         children: [
-          const Spacer(),
-          const SizedBox(height: 20),
-          const Text(
-            'Check your email',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0xFF203035),
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 8),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               'We have sent a password recover instructions to your email.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFF789199),
-                fontSize: 13,
+                fontSize: 18,
               ),
             ),
           ),
           const Spacer(
             flex: 2,
           ),
+          const Icon(
+            Icons.email,
+            size: 100,
+          ),
+          const Spacer(),
+          const Spacer(),
           AppButton(
             label: 'Open mail app',
             onPressed: _onMailOpen,
@@ -56,27 +50,6 @@ class _CheckEmailViewState extends State<CheckEmailView> {
             type: ButtonType.secondary,
           ),
           const SizedBox(height: 41),
-          const Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text:
-                      'Did not receive the email? Check your spam filter, or ',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                TextSpan(
-                  text: 'try another email address',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-            textAlign: TextAlign.center,
-          ),
           const SizedBox(height: 8),
         ],
       ),
