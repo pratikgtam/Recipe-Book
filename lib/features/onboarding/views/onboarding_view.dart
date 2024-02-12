@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_book/features/auth/views/login_view.dart';
 import 'package:recipe_book/features/onboarding/models/onboarding_model.dart';
 import 'package:recipe_book/shared/app_assets.dart';
+import 'package:recipe_book/shared/app_button.dart';
+import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/custom_carousel.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/dots_indicator.dart';
@@ -47,13 +50,21 @@ class _OnboardingViewState extends State<OnboardingView> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40),
-            child: CustomDotsIndicator(
-              dotsCount: 3,
-              position: _carouselIndex,
+          if (_carouselIndex == 2)
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: AppButton(
+                  label: 'Get Started',
+                  onPressed: () => AppRoutes(context).push(const LoginView())),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40),
+              child: CustomDotsIndicator(
+                dotsCount: 3,
+                position: _carouselIndex,
+              ),
             ),
-          ),
         ],
       ),
       body: CustomCarousel(
