@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_book/features/onboarding/views/onboarding_view.dart';
+import 'package:recipe_book/features/recipe/ui/welcome/welcome.dart';
 import 'package:recipe_book/firebase_options.dart';
 import 'package:recipe_book/global_providers/global_providers.dart';
 
@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalProviders(
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Recipe Book',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
           useMaterial3: true,
         ),
-        home: const OnboardingView(),
+        home: const Welcome(),
       ),
     );
   }

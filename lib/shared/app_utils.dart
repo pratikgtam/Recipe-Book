@@ -63,4 +63,11 @@ class AppUtils {
   static double getViewInsetsBottom(BuildContext context) {
     return MediaQuery.of(context).viewInsets.bottom;
   }
+
+  static String centsToDollars(int? cents) {
+    if (cents == null) {
+      return '\$0,00';
+    }
+    return '\$${(cents / 100).toStringAsFixed(2).replaceAll('.', ',')}';
+  }
 }

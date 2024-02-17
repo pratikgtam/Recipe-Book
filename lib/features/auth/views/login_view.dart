@@ -6,7 +6,7 @@ import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_state.dart';
 import 'package:recipe_book/features/auth/views/reset_password_view.dart';
 import 'package:recipe_book/features/auth/views/sign_up_view.dart';
-import 'package:recipe_book/features/home/home_view.dart';
+import 'package:recipe_book/features/recipe/ui/welcome/welcome.dart';
 import 'package:recipe_book/shared/app_button.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/app_utils.dart';
@@ -162,7 +162,7 @@ class _LoginViewState extends State<LoginView> {
   }
 
   void _navigateSuccess() {
-    AppRoutes(context).pushAndRemoveUntil(const HomeView());
+    AppRoutes(context).pushAndRemoveUntil(const Welcome());
   }
 
   bool _listenWhen(AuthState previous, AuthState current) {

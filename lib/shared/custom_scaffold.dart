@@ -24,6 +24,7 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
+        titleSpacing: 28,
         title: Text(
           title ?? '',
         ),
@@ -31,9 +32,9 @@ class CustomScaffold extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(
-            AppConstants.horizontalPadding,
+            AppConstants.horizontalScreenPadding,
             4,
-            AppConstants.horizontalPadding,
+            AppConstants.horizontalScreenPadding,
             0,
           ),
           child: body,
@@ -44,9 +45,9 @@ class CustomScaffold extends StatelessWidget {
           : SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
-                  AppConstants.horizontalPadding,
+                  AppConstants.horizontalScreenPadding,
                   4,
-                  AppConstants.horizontalPadding,
+                  AppConstants.horizontalScreenPadding,
                   4,
                 ),
                 child: bottomNavigationBar,
