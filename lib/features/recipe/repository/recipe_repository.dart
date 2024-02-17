@@ -1,6 +1,6 @@
 import 'package:recipe_book/features/recipe/models/recipe_model.dart';
 import 'package:recipe_book/shared/app_constants.dart';
-import 'package:recipe_book/shared/firebase_service.dart';
+import 'package:recipe_book/shared/firebase_repository.dart';
 
 class RecipeRepository {
   final FirebaseRepository _firebaseService = FirebaseRepository();

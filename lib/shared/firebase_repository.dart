@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class FirebaseRepository {
   final FirebaseFirestore db = FirebaseFirestore.instance;
@@ -14,7 +17,6 @@ class FirebaseRepository {
               'id': e.id,
             })
         .toList();
-    // log('response: ${jsonEncode(response)}');
     return response;
   }
 
@@ -46,5 +48,13 @@ class FirebaseRepository {
       batch.delete(doc.reference);
     }
     return batch.commit();
+  }
+
+  Future<String> uploadImage({required File file}) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child('image1.jpg');
+    UploadTask uploadTask = ref.putFile(file);
+    final url = await (await uploadTask).ref.getDownloadURL();
+    return url;
   }
 }

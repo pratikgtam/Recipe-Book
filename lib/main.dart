@@ -30,6 +30,15 @@ class MyApp extends StatelessWidget {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
       useMaterial3: true,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          fixedSize: MaterialStateProperty.all(
+            const Size(double.infinity, 48),
+          ),
+          backgroundColor: MaterialStateProperty.all(Colors.teal),
+          foregroundColor: MaterialStateProperty.all(Colors.white),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(
           color: Colors.grey[600],

@@ -20,14 +20,32 @@ class _AddViewState extends State<AddView> {
   }
 
   final _formKey = GlobalKey<FormBuilderState>();
+  final List<String> _categories = [
+    'Breakfast',
+    'Lunch',
+    'Dinner',
+    'Snack',
+    'Dessert',
+  ];
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      bottomNavigationBar: ElevatedButton(
+        onPressed: () {
+          if (_formKey.currentState!.saveAndValidate()) {
+            context.read<AddCubit>().addRecipe(
+                  _formKey.currentState!.value,
+                );
+          }
+        },
+        child: const Text('Add'),
+      ),
       title: 'Add Recipe',
       body: SingleChildScrollView(
         child: FormBuilder(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
                 onTap: () {
@@ -64,13 +82,16 @@ class _AddViewState extends State<AddView> {
                 textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 16),
-              const TextInput(
+              TextInput(
                 name: 'description',
                 labelText: 'Description',
                 maxLines: 3,
                 hintText:
                     'Momo is a famous dish in Nepal. It is a type of dumpling filled with meat and vegetables. It is served with achar.',
                 textInputAction: TextInputAction.next,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(),
+                ]),
               ),
               const SizedBox(height: 16),
               const TextInput(
@@ -88,6 +109,44 @@ class _AddViewState extends State<AddView> {
                 hintText:
                     '1. Mix flour and water. 2. Prepare filling. 3. Make momo. 4. Steam momo.',
                 textInputAction: TextInputAction.next,
+              ),
+              const SizedBox(height: 16),
+              TextInput(
+                name: 'timeToPrepare',
+                labelText: 'Time to prepare',
+                hintText: '30',
+                suffixText: 'minutes',
+                textInputAction: TextInputAction.next,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(),
+                  FormBuilderValidators.numeric(),
+                ]),
+              ),
+              const SizedBox(height: 16),
+              const Text('Categories',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                  )),
+              const SizedBox(height: 4),
+              Wrap(
+                spacing: 8,
+                children: _categories.map((category) {
+                  return FilterChip(
+                    label: Text(category),
+                    selected: context
+                        .watch<AddCubit>()
+                        .state
+                        .categories
+                        .contains(category),
+                    onSelected: (bool selected) {
+                      if (selected) {
+                        context.read<AddCubit>().addCategory(category);
+                      } else {
+                        context.read<AddCubit>().removeCategory(category);
+                      }
+                    },
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 16),
             ],

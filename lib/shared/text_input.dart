@@ -15,6 +15,7 @@ class TextInput extends StatelessWidget {
     this.hintText,
     this.autofocus = true,
     this.maxLines,
+    this.suffixText,
   });
 
   final String name;
@@ -25,7 +26,7 @@ class TextInput extends StatelessWidget {
   final TextInputType textInputType;
   final String? Function(String?)? validator;
   final String? initialValue;
-
+  final String? suffixText;
   final TextInputAction? textInputAction;
   final int? maxLines;
   final bool autofocus;
@@ -43,7 +44,6 @@ class TextInput extends StatelessWidget {
               labelText ?? '',
               style: const TextStyle(
                 fontWeight: FontWeight.w500,
-                fontSize: 15,
               ),
             ),
           ),
@@ -60,6 +60,7 @@ class TextInput extends StatelessWidget {
           validator: validator,
           keyboardType: textInputType,
           decoration: InputDecoration(
+            suffixText: suffixText,
             contentPadding: const EdgeInsets.all(16),
             hintText: hintText,
             filled: true,
