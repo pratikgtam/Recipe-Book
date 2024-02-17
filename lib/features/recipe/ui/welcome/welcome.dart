@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_book/features/add/views/add_view.dart';
 import 'package:recipe_book/features/recipe/models/recipe_model.dart';
 import 'package:recipe_book/shared/app_constants.dart';
-import 'package:recipe_book/shared/custom_scaffold.dart';
+import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/image.dart';
 
 class Welcome extends StatelessWidget {
@@ -9,8 +10,30 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      title: 'Welcome',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welcome'),
+        centerTitle: false,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          AppRoutes(context).push(const AddView());
+        },
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
       body: Column(
         children: [
           const _BrandsList(),

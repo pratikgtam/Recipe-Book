@@ -14,6 +14,7 @@ class TextInput extends StatelessWidget {
     this.textInputAction,
     this.hintText,
     this.autofocus = true,
+    this.maxLines,
   });
 
   final String name;
@@ -26,7 +27,7 @@ class TextInput extends StatelessWidget {
   final String? initialValue;
 
   final TextInputAction? textInputAction;
-
+  final int? maxLines;
   final bool autofocus;
 
   @override
@@ -50,6 +51,7 @@ class TextInput extends StatelessWidget {
           autofocus: autofocus,
           textInputAction: textInputAction,
           initialValue: initialValue,
+          maxLines: maxLines,
           name: name,
           style: const TextStyle(
             fontWeight: FontWeight.w600,

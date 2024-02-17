@@ -3,7 +3,7 @@ import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/firebase_service.dart';
 
 class RecipeRepository {
-  final FirebaseService _firebaseService = FirebaseService();
+  final FirebaseRepository _firebaseService = FirebaseRepository();
 
   Future<List<RecipeModel>> getRecipe() async {
     List<Map<String, dynamic>> productsResponse;

@@ -20,11 +20,24 @@ class MyApp extends StatelessWidget {
     return GlobalProviders(
       child: MaterialApp(
         title: 'Recipe Book',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-          useMaterial3: true,
-        ),
+        theme: getTheme(),
         home: const Welcome(),
+      ),
+    );
+  }
+
+  ThemeData getTheme() {
+    return ThemeData(
+      colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+      useMaterial3: true,
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(
+          color: Colors.grey[600],
+          fontWeight: FontWeight.w400,
+        ),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
       ),
     );
   }

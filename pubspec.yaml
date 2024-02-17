@@ -41,6 +41,7 @@ dependencies:
   form_builder_validators: ^9.1.0
   freezed_annotation: ^2.4.1
   google_sign_in: ^6.2.1
+  image_picker: ^1.0.7
   open_mail_app: ^0.4.5
 
 dev_dependencies:

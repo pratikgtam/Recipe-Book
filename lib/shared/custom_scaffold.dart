@@ -24,7 +24,7 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        titleSpacing: 28,
+        titleSpacing: 0,
         title: Text(
           title ?? '',
         ),
