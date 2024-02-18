@@ -126,14 +126,15 @@ class _BrandsList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: AppConstants.horizontalScreenPadding - 10),
         itemBuilder: (context, index) {
+          final item = AppConstants.categories[index];
           return _HorizontalFilterItem(
             onTap: () {},
-            name: 'Category $index',
+            name: item,
             selected: false,
           );
         },
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: AppConstants.categories.length,
       ),
     );
   }

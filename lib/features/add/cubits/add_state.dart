@@ -6,7 +6,7 @@ part 'add_state.freezed.dart';
 @freezed
 class AddState with _$AddState {
   factory AddState({
-    @Default(Result<void>.empty()) Result<void> data,
+    @Default(Result<void>.empty()) Result<void> addState,
     String? imageUrl,
     @Default([]) List<String> categories,
   }) = _AddState;

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddState {
-  Result<void> get data => throw _privateConstructorUsedError;
+  Result<void> get addState => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   List<String> get categories => throw _privateConstructorUsedError;
 
@@ -30,9 +30,9 @@ abstract class $AddStateCopyWith<$Res> {
   factory $AddStateCopyWith(AddState value, $Res Function(AddState) then) =
       _$AddStateCopyWithImpl<$Res, AddState>;
   @useResult
-  $Res call({Result<void> data, String? imageUrl, List<String> categories});
+  $Res call({Result<void> addState, String? imageUrl, List<String> categories});
 
-  $ResultCopyWith<void, $Res> get data;
+  $ResultCopyWith<void, $Res> get addState;
 }
 
 /// @nodoc
@@ -48,14 +48,14 @@ class _$AddStateCopyWithImpl<$Res, $Val extends AddState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? addState = null,
     Object? imageUrl = freezed,
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      addState: null == addState
+          ? _value.addState
+          : addState // ignore: cast_nullable_to_non_nullable
               as Result<void>,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
@@ -70,9 +70,9 @@ class _$AddStateCopyWithImpl<$Res, $Val extends AddState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ResultCopyWith<void, $Res> get data {
-    return $ResultCopyWith<void, $Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+  $ResultCopyWith<void, $Res> get addState {
+    return $ResultCopyWith<void, $Res>(_value.addState, (value) {
+      return _then(_value.copyWith(addState: value) as $Val);
     });
   }
 }
@@ -85,10 +85,10 @@ abstract class _$$AddStateImplCopyWith<$Res>
       __$$AddStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Result<void> data, String? imageUrl, List<String> categories});
+  $Res call({Result<void> addState, String? imageUrl, List<String> categories});
 
   @override
-  $ResultCopyWith<void, $Res> get data;
+  $ResultCopyWith<void, $Res> get addState;
 }
 
 /// @nodoc
@@ -102,14 +102,14 @@ class __$$AddStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? addState = null,
     Object? imageUrl = freezed,
     Object? categories = null,
   }) {
     return _then(_$AddStateImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      addState: null == addState
+          ? _value.addState
+          : addState // ignore: cast_nullable_to_non_nullable
               as Result<void>,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
@@ -127,14 +127,14 @@ class __$$AddStateImplCopyWithImpl<$Res>
 
 class _$AddStateImpl implements _AddState {
   _$AddStateImpl(
-      {this.data = const Result<void>.empty(),
+      {this.addState = const Result<void>.empty(),
       this.imageUrl,
       final List<String> categories = const []})
       : _categories = categories;
 
   @override
   @JsonKey()
-  final Result<void> data;
+  final Result<void> addState;
   @override
   final String? imageUrl;
   final List<String> _categories;
@@ -148,7 +148,7 @@ class _$AddStateImpl implements _AddState {
 
   @override
   String toString() {
-    return 'AddState(data: $data, imageUrl: $imageUrl, categories: $categories)';
+    return 'AddState(addState: $addState, imageUrl: $imageUrl, categories: $categories)';
   }
 
   @override
@@ -156,7 +156,8 @@ class _$AddStateImpl implements _AddState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddStateImpl &&
-            (identical(other.data, data) || other.data == data) &&
+            (identical(other.addState, addState) ||
+                other.addState == addState) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             const DeepCollectionEquality()
@@ -164,7 +165,7 @@ class _$AddStateImpl implements _AddState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data, imageUrl,
+  int get hashCode => Object.hash(runtimeType, addState, imageUrl,
       const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
@@ -176,12 +177,12 @@ class _$AddStateImpl implements _AddState {
 
 abstract class _AddState implements AddState {
   factory _AddState(
-      {final Result<void> data,
+      {final Result<void> addState,
       final String? imageUrl,
       final List<String> categories}) = _$AddStateImpl;
 
   @override
-  Result<void> get data;
+  Result<void> get addState;
   @override
   String? get imageUrl;
   @override

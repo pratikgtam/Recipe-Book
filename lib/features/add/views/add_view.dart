@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:recipe_book/features/add/cubits/add_cubit.dart';
+import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/text_input.dart';
 
@@ -16,19 +17,15 @@ class AddView extends StatefulWidget {
 class _AddViewState extends State<AddView> {
   @override
   void initState() {
+    context.read<AddCubit>().clear();
     super.initState();
   }
 
   final _formKey = GlobalKey<FormBuilderState>();
-  final List<String> _categories = [
-    'Breakfast',
-    'Lunch',
-    'Dinner',
-    'Snack',
-    'Dessert',
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final imageUrl = context.select((AddCubit cubit) => cubit.state.imageUrl);
     return CustomScaffold(
       bottomNavigationBar: ElevatedButton(
         onPressed: () {
@@ -48,9 +45,7 @@ class _AddViewState extends State<AddView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: () {
-                  context.read<AddCubit>().pickImage();
-                },
+                onTap: () => context.read<AddCubit>().pickImage(),
                 child: Container(
                   width: double.infinity,
                   height: 200,
@@ -59,16 +54,21 @@ class _AddViewState extends State<AddView> {
                         Theme.of(context).colorScheme.primary.withOpacity(0.25),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.camera_alt,
-                        size: 50,
-                      ),
-                      Text('Add photo'),
-                    ],
-                  ),
+                  child: imageUrl != null
+                      ? Image.network(
+                          imageUrl,
+                          fit: BoxFit.cover,
+                        )
+                      : const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.camera_alt,
+                              size: 50,
+                            ),
+                            Text('Add photo'),
+                          ],
+                        ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -130,7 +130,7 @@ class _AddViewState extends State<AddView> {
               const SizedBox(height: 4),
               Wrap(
                 spacing: 8,
-                children: _categories.map((category) {
+                children: AppConstants.categories.map((category) {
                   return FilterChip(
                     label: Text(category),
                     selected: context

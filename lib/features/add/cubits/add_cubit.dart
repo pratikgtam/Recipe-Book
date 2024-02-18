@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recipe_book/features/add/cubits/add_state.dart';
+import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/firebase_repository.dart';
+import 'package:recipe_book/shared/models/result.dart';
 
 class AddCubit extends Cubit<AddState> {
   AddCubit(this.repository) : super(AddState());
@@ -37,5 +39,21 @@ class AddCubit extends Cubit<AddState> {
     emit(state.copyWith(categories: categories));
   }
 
-  void addRecipe(Map<String, dynamic> value) {}
+  Future<void> addRecipe(Map<String, dynamic> formData) async {
+    try {
+      emit(state.copyWith(addState: const Result<void>.loading()));
+      final Map<String, dynamic> value = Map<String, dynamic>.from(formData);
+      value['imageUrl'] = state.imageUrl;
+      value['categories'] = state.categories;
+      await repository.addDocument(
+          collectionName: AppConstants.recipeCollectionName, data: value);
+      emit(state.copyWith(addState: const Result<void>.success(null)));
+    } catch (e, _) {
+      emit(state.copyWith(addState: Result<void>.failure(e.toString(), _)));
+    }
+  }
+
+  void clear() {
+    emit(AddState());
+  }
 }
