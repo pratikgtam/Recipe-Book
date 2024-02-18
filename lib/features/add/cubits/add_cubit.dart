@@ -12,7 +12,6 @@ class AddCubit extends Cubit<AddState> {
 
   final FirebaseRepository repository;
 
-  Future<void> init() async {}
   Future<void> pickImage() async {
     final xFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
