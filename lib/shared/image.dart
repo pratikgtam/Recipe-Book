@@ -16,12 +16,7 @@ class CustomNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.05),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      padding: padding,
+    return SizedBox(
       width: width,
       height: height,
       child: SizedBox.expand(
@@ -33,6 +28,7 @@ class CustomNetworkImage extends StatelessWidget {
   Image _buildImage() {
     return Image.network(
       imageUrl!,
+      // fit: BoxFit.contain,
       loadingBuilder: (context, child, loadingProgress) {
         return child;
       },

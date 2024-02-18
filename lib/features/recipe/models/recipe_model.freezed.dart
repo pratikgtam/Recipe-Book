@@ -22,7 +22,7 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) {
 mixin _$RecipeModel {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
   List<String> get ingredients => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $RecipeModelCopyWith<$Res> {
   $Res call(
       {String? name,
       String? description,
-      String? image,
+      String image,
       String? category,
       List<String> ingredients});
 }
@@ -61,7 +61,7 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
   $Res call({
     Object? name = freezed,
     Object? description = freezed,
-    Object? image = freezed,
+    Object? image = null,
     Object? category = freezed,
     Object? ingredients = null,
   }) {
@@ -74,10 +74,10 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: freezed == image
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$RecipeModelImplCopyWith<$Res>
   $Res call(
       {String? name,
       String? description,
-      String? image,
+      String image,
       String? category,
       List<String> ingredients});
 }
@@ -119,7 +119,7 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? description = freezed,
-    Object? image = freezed,
+    Object? image = null,
     Object? category = freezed,
     Object? ingredients = null,
   }) {
@@ -132,10 +132,10 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: freezed == image
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -152,9 +152,10 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RecipeModelImpl implements _RecipeModel {
   _$RecipeModelImpl(
-      {this.name,
+      {this.name = 'Momo',
       this.description,
-      this.image,
+      this.image =
+          'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/licensed-image.jpeg?alt=media&token=fdf44dc9-0842-4bc3-be95-42ad6cbd404b',
       this.category,
       final List<String> ingredients = const []})
       : _ingredients = ingredients;
@@ -163,11 +164,13 @@ class _$RecipeModelImpl implements _RecipeModel {
       _$$RecipeModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final String? name;
   @override
   final String? description;
   @override
-  final String? image;
+  @JsonKey()
+  final String image;
   @override
   final String? category;
   final List<String> _ingredients;
@@ -222,7 +225,7 @@ abstract class _RecipeModel implements RecipeModel {
   factory _RecipeModel(
       {final String? name,
       final String? description,
-      final String? image,
+      final String image,
       final String? category,
       final List<String> ingredients}) = _$RecipeModelImpl;
 
@@ -234,7 +237,7 @@ abstract class _RecipeModel implements RecipeModel {
   @override
   String? get description;
   @override
-  String? get image;
+  String get image;
   @override
   String? get category;
   @override
