@@ -63,6 +63,10 @@ class TextInput extends StatelessWidget {
             suffixText: suffixText,
             contentPadding: const EdgeInsets.all(16),
             hintText: hintText,
+            hintStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: Colors.grey[500],
+            ),
             filled: true,
           ),
           obscureText: obscureText,

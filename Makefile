@@ -14,6 +14,6 @@ generate_feature:
 
 # Usage example: 
 #make generate_feature \
-feature=add \
-view=add \
-cubit=add	
+feature=profile \
+view=profile \
+cubit=profile	
