@@ -81,8 +81,9 @@ class FirebaseRepository {
   }
 
   Future<String> uploadImage({required File file}) async {
+    final imageName = DateTime.now().millisecondsSinceEpoch.toString();
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child('image1.jpg');
+    Reference ref = storage.ref().child('$imageName.jpg');
     UploadTask uploadTask = ref.putFile(file);
     final url = await (await uploadTask).ref.getDownloadURL();
     return url;
