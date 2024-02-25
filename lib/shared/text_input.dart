@@ -14,7 +14,7 @@ class TextInput extends StatelessWidget {
     this.textInputAction,
     this.hintText,
     this.autofocus = true,
-    this.maxLines,
+    this.maxLines = 1,
     this.suffixText,
   });
 

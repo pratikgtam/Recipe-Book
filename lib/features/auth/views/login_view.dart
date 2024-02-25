@@ -6,7 +6,7 @@ import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_state.dart';
 import 'package:recipe_book/features/auth/views/reset_password_view.dart';
 import 'package:recipe_book/features/auth/views/sign_up_view.dart';
-import 'package:recipe_book/features/recipe/ui/welcome/welcome.dart';
+import 'package:recipe_book/features/recipe/ui/welcome.dart';
 import 'package:recipe_book/shared/app_button.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/app_utils.dart';

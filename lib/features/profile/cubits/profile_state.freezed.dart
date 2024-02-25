@@ -15,23 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProfileState {
-  Result<void> get data => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProfileStateCopyWith<ProfileState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+mixin _$ProfileState {}
 
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
-  @useResult
-  $Res call({Result<void> data});
-
-  $ResultCopyWith<void, $Res> get data;
 }
 
 /// @nodoc
@@ -43,41 +33,13 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Result<void>,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ResultCopyWith<void, $Res> get data {
-    return $ResultCopyWith<void, $Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$ProfileStateImplCopyWith<$Res>
-    implements $ProfileStateCopyWith<$Res> {
+abstract class _$$ProfileStateImplCopyWith<$Res> {
   factory _$$ProfileStateImplCopyWith(
           _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
       __$$ProfileStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Result<void> data});
-
-  @override
-  $ResultCopyWith<void, $Res> get data;
 }
 
 /// @nodoc
@@ -87,60 +49,28 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   __$$ProfileStateImplCopyWithImpl(
       _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data = null,
-  }) {
-    return _then(_$ProfileStateImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Result<void>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  _$ProfileStateImpl({this.data = const Result<void>.empty()});
-
-  @override
-  @JsonKey()
-  final Result<void> data;
+  _$ProfileStateImpl();
 
   @override
   String toString() {
-    return 'ProfileState(data: $data)';
+    return 'ProfileState()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ProfileStateImpl &&
-            (identical(other.data, data) || other.data == data));
+        (other.runtimeType == runtimeType && other is _$ProfileStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
-      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 }
 
 abstract class _ProfileState implements ProfileState {
-  factory _ProfileState({final Result<void> data}) = _$ProfileStateImpl;
-
-  @override
-  Result<void> get data;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory _ProfileState() = _$ProfileStateImpl;
 }

@@ -25,16 +25,19 @@ class CustomNetworkImage extends StatelessWidget {
     );
   }
 
-  Image _buildImage() {
-    return Image.network(
-      imageUrl!,
-      // fit: BoxFit.contain,
-      loadingBuilder: (context, child, loadingProgress) {
-        return child;
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return const Icon(Icons.error);
-      },
+  Widget _buildImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Image.network(
+        imageUrl!,
+        fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          return child;
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return const Icon(Icons.error);
+        },
+      ),
     );
   }
 }

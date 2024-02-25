@@ -10,6 +10,7 @@ class CustomScaffold extends StatelessWidget {
     this.showAppBar = true,
     this.bottom,
     this.appBar,
+    this.actions,
   });
   final String? title;
   final Widget body;
@@ -18,13 +19,14 @@ class CustomScaffold extends StatelessWidget {
 
   final PreferredSizeWidget? bottom;
   final PreferredSizeWidget? appBar;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         titleSpacing: 0,
+        actions: actions,
         title: Text(
           title ?? '',
         ),

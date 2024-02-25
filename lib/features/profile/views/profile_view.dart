@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
+import 'package:recipe_book/features/auth/views/login_view.dart';
+import 'package:recipe_book/features/recipe/ui/my_recipe.dart';
+import 'package:recipe_book/shared/app_routes.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -37,6 +42,13 @@ class _ProfileViewState extends State<ProfileView> {
           ),
           const SizedBox(height: 32),
           _ListTile(
+            title: 'My Recipes',
+            onTap: () {
+              AppRoutes(context).push(const MyRecipe());
+            },
+            icon: Icons.food_bank,
+          ),
+          _ListTile(
             title: 'Notifications',
             onTap: () {},
             icon: Icons.notifications_none,
@@ -50,6 +62,14 @@ class _ProfileViewState extends State<ProfileView> {
             title: 'About',
             onTap: () {},
             icon: Icons.info_outline,
+          ),
+          _ListTile(
+            title: 'Logout',
+            onTap: () {
+              context.read<AuthCubit>().logout();
+              AppRoutes(context).pushAndRemoveUntil(const LoginView());
+            },
+            icon: Icons.logout,
           ),
           const SizedBox(height: 16),
         ],

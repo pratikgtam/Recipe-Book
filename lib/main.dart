@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_book/features/recipe/ui/welcome/welcome.dart';
+import 'package:recipe_book/features/auth/views/login_view.dart';
+import 'package:recipe_book/features/recipe/ui/welcome.dart';
 import 'package:recipe_book/firebase_options.dart';
 import 'package:recipe_book/global_providers/global_providers.dart';
 
@@ -21,7 +23,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Recipe Book',
         theme: getTheme(),
-        home: const Welcome(),
+        home: FirebaseAuth.instance.currentUser != null
+            ? const Welcome()
+            : const LoginView(),
       ),
     );
   }
