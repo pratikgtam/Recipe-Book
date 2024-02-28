@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_state.dart';
+import 'package:recipe_book/features/recipe/models/recipe_model.dart';
 import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/firebase_repository.dart';
 import 'package:recipe_book/shared/models/result.dart';
@@ -41,5 +42,9 @@ class RecipeCubit extends Cubit<RecipeState> {
         s,
       )));
     }
+  }
+
+  Future<void> setSelectedRecipe(RecipeModel recipe) async {
+    emit(state.copyWith(selectedRecipe: recipe));
   }
 }

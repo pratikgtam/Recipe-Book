@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
-import 'package:recipe_book/features/recipe/ui/welcome.dart';
+import 'package:recipe_book/features/recipe/ui/recipe_list.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 
 class MyRecipe extends StatefulWidget {

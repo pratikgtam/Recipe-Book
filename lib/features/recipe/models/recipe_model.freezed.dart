@@ -194,7 +194,7 @@ class _$RecipeModelImpl implements _RecipeModel {
       {this.name = 'Momo',
       this.description,
       this.imageUrl =
-          'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/licensed-image.jpeg?alt=media&token=fdf44dc9-0842-4bc3-be95-42ad6cbd404b',
+          'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/onboard3.png?alt=media&token=eef49acb-aa0c-45be-8505-2826521d8afe',
       final List<String> categories = const [],
       this.ingredients,
       this.steps,

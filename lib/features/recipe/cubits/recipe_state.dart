@@ -11,5 +11,6 @@ class RecipeState with _$RecipeState {
     Result<List<RecipeModel>> userRecipes,
     @Default(Result<List<RecipeModel>>.empty())
     Result<List<RecipeModel>> allRecipes,
+    RecipeModel? selectedRecipe,
   }) = _RecipeState;
 }

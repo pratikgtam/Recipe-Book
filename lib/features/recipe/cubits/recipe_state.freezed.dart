@@ -20,6 +20,7 @@ mixin _$RecipeState {
       throw _privateConstructorUsedError;
   Result<List<RecipeModel>> get allRecipes =>
       throw _privateConstructorUsedError;
+  RecipeModel? get selectedRecipe => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeStateCopyWith<RecipeState> get copyWith =>
@@ -34,10 +35,12 @@ abstract class $RecipeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Result<List<RecipeModel>> userRecipes,
-      Result<List<RecipeModel>> allRecipes});
+      Result<List<RecipeModel>> allRecipes,
+      RecipeModel? selectedRecipe});
 
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
   $ResultCopyWith<List<RecipeModel>, $Res> get allRecipes;
+  $RecipeModelCopyWith<$Res>? get selectedRecipe;
 }
 
 /// @nodoc
@@ -55,6 +58,7 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
   $Res call({
     Object? userRecipes = null,
     Object? allRecipes = null,
+    Object? selectedRecipe = freezed,
   }) {
     return _then(_value.copyWith(
       userRecipes: null == userRecipes
@@ -65,6 +69,10 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
           ? _value.allRecipes
           : allRecipes // ignore: cast_nullable_to_non_nullable
               as Result<List<RecipeModel>>,
+      selectedRecipe: freezed == selectedRecipe
+          ? _value.selectedRecipe
+          : selectedRecipe // ignore: cast_nullable_to_non_nullable
+              as RecipeModel?,
     ) as $Val);
   }
 
@@ -84,6 +92,18 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
       return _then(_value.copyWith(allRecipes: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RecipeModelCopyWith<$Res>? get selectedRecipe {
+    if (_value.selectedRecipe == null) {
+      return null;
+    }
+
+    return $RecipeModelCopyWith<$Res>(_value.selectedRecipe!, (value) {
+      return _then(_value.copyWith(selectedRecipe: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -96,12 +116,15 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Result<List<RecipeModel>> userRecipes,
-      Result<List<RecipeModel>> allRecipes});
+      Result<List<RecipeModel>> allRecipes,
+      RecipeModel? selectedRecipe});
 
   @override
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
   @override
   $ResultCopyWith<List<RecipeModel>, $Res> get allRecipes;
+  @override
+  $RecipeModelCopyWith<$Res>? get selectedRecipe;
 }
 
 /// @nodoc
@@ -117,6 +140,7 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? userRecipes = null,
     Object? allRecipes = null,
+    Object? selectedRecipe = freezed,
   }) {
     return _then(_$RecipeStateImpl(
       userRecipes: null == userRecipes
@@ -127,6 +151,10 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
           ? _value.allRecipes
           : allRecipes // ignore: cast_nullable_to_non_nullable
               as Result<List<RecipeModel>>,
+      selectedRecipe: freezed == selectedRecipe
+          ? _value.selectedRecipe
+          : selectedRecipe // ignore: cast_nullable_to_non_nullable
+              as RecipeModel?,
     ));
   }
 }
@@ -136,7 +164,8 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
 class _$RecipeStateImpl implements _RecipeState {
   _$RecipeStateImpl(
       {this.userRecipes = const Result<List<RecipeModel>>.empty(),
-      this.allRecipes = const Result<List<RecipeModel>>.empty()});
+      this.allRecipes = const Result<List<RecipeModel>>.empty(),
+      this.selectedRecipe});
 
   @override
   @JsonKey()
@@ -144,10 +173,12 @@ class _$RecipeStateImpl implements _RecipeState {
   @override
   @JsonKey()
   final Result<List<RecipeModel>> allRecipes;
+  @override
+  final RecipeModel? selectedRecipe;
 
   @override
   String toString() {
-    return 'RecipeState(userRecipes: $userRecipes, allRecipes: $allRecipes)';
+    return 'RecipeState(userRecipes: $userRecipes, allRecipes: $allRecipes, selectedRecipe: $selectedRecipe)';
   }
 
   @override
@@ -158,11 +189,14 @@ class _$RecipeStateImpl implements _RecipeState {
             (identical(other.userRecipes, userRecipes) ||
                 other.userRecipes == userRecipes) &&
             (identical(other.allRecipes, allRecipes) ||
-                other.allRecipes == allRecipes));
+                other.allRecipes == allRecipes) &&
+            (identical(other.selectedRecipe, selectedRecipe) ||
+                other.selectedRecipe == selectedRecipe));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userRecipes, allRecipes);
+  int get hashCode =>
+      Object.hash(runtimeType, userRecipes, allRecipes, selectedRecipe);
 
   @JsonKey(ignore: true)
   @override
@@ -174,12 +208,15 @@ class _$RecipeStateImpl implements _RecipeState {
 abstract class _RecipeState implements RecipeState {
   factory _RecipeState(
       {final Result<List<RecipeModel>> userRecipes,
-      final Result<List<RecipeModel>> allRecipes}) = _$RecipeStateImpl;
+      final Result<List<RecipeModel>> allRecipes,
+      final RecipeModel? selectedRecipe}) = _$RecipeStateImpl;
 
   @override
   Result<List<RecipeModel>> get userRecipes;
   @override
   Result<List<RecipeModel>> get allRecipes;
+  @override
+  RecipeModel? get selectedRecipe;
   @override
   @JsonKey(ignore: true)
   _$$RecipeStateImplCopyWith<_$RecipeStateImpl> get copyWith =>
