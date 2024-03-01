@@ -19,6 +19,7 @@ class RecipeCubit extends Cubit<RecipeState> {
       final recipes = await repository.getAllRecipes();
       emit(state.copyWith(
         recipes: Result.success(recipes),
+        allRecipes: recipes,
       ));
     } catch (e, s) {
       emit(state.copyWith(
@@ -48,5 +49,18 @@ class RecipeCubit extends Cubit<RecipeState> {
 
   Future<void> setSelectedRecipe(RecipeModel recipe) async {
     emit(state.copyWith(selectedRecipe: recipe));
+  }
+
+  void selectCategory(String category) {
+    emit(state.copyWith(selectedCategory: category));
+    final recipes = state.allRecipes;
+    if (category == 'All') {
+      emit(state.copyWith(recipes: Result.success(recipes)));
+    } else {
+      final filteredRecipes = recipes
+          .where((recipe) => recipe.categories.contains(category))
+          .toList();
+      emit(state.copyWith(recipes: Result.success(filteredRecipes)));
+    }
   }
 }

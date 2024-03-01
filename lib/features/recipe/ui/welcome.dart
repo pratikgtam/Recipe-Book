@@ -102,9 +102,12 @@ class _BrandsList extends StatelessWidget {
             final item =
                 index == 0 ? 'All' : AppConstants.categories[index - 1];
             return _HorizontalFilterItem(
-              onTap: () {},
+              onTap: () {
+                context.read<RecipeCubit>().selectCategory(item);
+              },
               name: item,
-              selected: index == 0,
+              selected:
+                  context.watch<RecipeCubit>().state.selectedCategory == item,
             );
           },
           scrollDirection: Axis.horizontal,

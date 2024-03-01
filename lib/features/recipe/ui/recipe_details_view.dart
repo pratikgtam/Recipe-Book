@@ -45,13 +45,25 @@ class RecipeDetailsPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
+            Wrap(
+                spacing: 8,
+                children: List.generate(
+                    recipe?.categories.length ?? 0,
+                    (index) => Chip(
+                        label: Text(
+                          recipe?.categories[index] ?? '',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        backgroundColor: Theme.of(context).primaryColor))),
+            const SizedBox(height: 10),
             Text(
               recipe?.description ?? '',
               style: const TextStyle(
                 fontSize: 16,
               ),
             ),
-            const SizedBox(width: 10),
             const SizedBox(height: 20),
             const Text(
               'Ingredients',
