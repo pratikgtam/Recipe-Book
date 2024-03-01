@@ -117,6 +117,6 @@ class FirebaseRepository {
     return db
         .collection(AppConstants.usersCollectionName)
         .doc(userId)
-        .update(value);
+        .set(value, SetOptions(merge: true));
   }
 }

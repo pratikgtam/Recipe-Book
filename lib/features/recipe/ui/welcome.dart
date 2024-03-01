@@ -26,7 +26,8 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
-    final name = context.watch<ProfileCubit>().state.profile.result?.fullName;
+    final name =
+        context.watch<ProfileCubit>().state.profile.result?.fullName ?? '';
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome $name'),
