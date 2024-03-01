@@ -61,7 +61,6 @@ class RecipeList extends StatelessWidget {
 
 class _Recipe extends StatelessWidget {
   const _Recipe({
-    super.key,
     required this.recipe,
   });
 

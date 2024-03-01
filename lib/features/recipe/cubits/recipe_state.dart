@@ -10,7 +10,9 @@ class RecipeState with _$RecipeState {
     @Default(Result<List<RecipeModel>>.empty())
     Result<List<RecipeModel>> userRecipes,
     @Default(Result<List<RecipeModel>>.empty())
-    Result<List<RecipeModel>> allRecipes,
+    Result<List<RecipeModel>> recipes,
+    @Default([]) List<RecipeModel> allRecipes,
     RecipeModel? selectedRecipe,
+    @Default('All') String selectedCategory,
   }) = _RecipeState;
 }

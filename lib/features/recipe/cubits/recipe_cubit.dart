@@ -12,15 +12,17 @@ class RecipeCubit extends Cubit<RecipeState> {
 
   Future<void> getAllRecipes() async {
     try {
-      final currentRecipes = state.allRecipes.result ?? [];
+      final currentRecipes = state.recipes.result ?? [];
       if (currentRecipes.isEmpty) {
-        emit(state.copyWith(allRecipes: const Result.loading()));
+        emit(state.copyWith(recipes: const Result.loading()));
       }
       final recipes = await repository.getAllRecipes();
-      emit(state.copyWith(allRecipes: Result.success(recipes)));
+      emit(state.copyWith(
+        recipes: Result.success(recipes),
+      ));
     } catch (e, s) {
       emit(state.copyWith(
-          allRecipes: Result.failure(
+          recipes: Result.failure(
         AppConstants.generalErrorMessage,
         s,
       )));

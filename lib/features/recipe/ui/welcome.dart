@@ -71,7 +71,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<RecipeCubit>().state.allRecipes;
+    final state = context.watch<RecipeCubit>().state.recipes;
     return Column(
       children: [
         const _BrandsList(),
