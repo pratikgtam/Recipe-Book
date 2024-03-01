@@ -16,6 +16,7 @@ class TextInput extends StatelessWidget {
     this.autofocus = true,
     this.maxLines = 1,
     this.suffixText,
+    this.readOnly = false,
   });
 
   final String name;
@@ -30,6 +31,7 @@ class TextInput extends StatelessWidget {
   final TextInputAction? textInputAction;
   final int? maxLines;
   final bool autofocus;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class TextInput extends StatelessWidget {
           initialValue: initialValue,
           maxLines: maxLines,
           name: name,
+          readOnly: readOnly,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),

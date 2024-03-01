@@ -15,13 +15,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProfileState {}
+mixin _$ProfileState {
+  Result<ProfileModel> get profile => throw _privateConstructorUsedError;
+  Result<void> get update => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProfileStateCopyWith<ProfileState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+  @useResult
+  $Res call({Result<ProfileModel> profile, Result<void> update});
+
+  $ResultCopyWith<ProfileModel, $Res> get profile;
+  $ResultCopyWith<void, $Res> get update;
 }
 
 /// @nodoc
@@ -33,13 +45,56 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profile = null,
+    Object? update = null,
+  }) {
+    return _then(_value.copyWith(
+      profile: null == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Result<ProfileModel>,
+      update: null == update
+          ? _value.update
+          : update // ignore: cast_nullable_to_non_nullable
+              as Result<void>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultCopyWith<ProfileModel, $Res> get profile {
+    return $ResultCopyWith<ProfileModel, $Res>(_value.profile, (value) {
+      return _then(_value.copyWith(profile: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultCopyWith<void, $Res> get update {
+    return $ResultCopyWith<void, $Res>(_value.update, (value) {
+      return _then(_value.copyWith(update: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$ProfileStateImplCopyWith<$Res> {
+abstract class _$$ProfileStateImplCopyWith<$Res>
+    implements $ProfileStateCopyWith<$Res> {
   factory _$$ProfileStateImplCopyWith(
           _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
       __$$ProfileStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Result<ProfileModel> profile, Result<void> update});
+
+  @override
+  $ResultCopyWith<ProfileModel, $Res> get profile;
+  @override
+  $ResultCopyWith<void, $Res> get update;
 }
 
 /// @nodoc
@@ -49,28 +104,75 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   __$$ProfileStateImplCopyWithImpl(
       _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profile = null,
+    Object? update = null,
+  }) {
+    return _then(_$ProfileStateImpl(
+      profile: null == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Result<ProfileModel>,
+      update: null == update
+          ? _value.update
+          : update // ignore: cast_nullable_to_non_nullable
+              as Result<void>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  _$ProfileStateImpl();
+  _$ProfileStateImpl(
+      {this.profile = const Result<ProfileModel>.empty(),
+      this.update = const Result<void>.empty()});
+
+  @override
+  @JsonKey()
+  final Result<ProfileModel> profile;
+  @override
+  @JsonKey()
+  final Result<void> update;
 
   @override
   String toString() {
-    return 'ProfileState()';
+    return 'ProfileState(profile: $profile, update: $update)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ProfileStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileStateImpl &&
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.update, update) || other.update == update));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, profile, update);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
 }
 
 abstract class _ProfileState implements ProfileState {
-  factory _ProfileState() = _$ProfileStateImpl;
+  factory _ProfileState(
+      {final Result<ProfileModel> profile,
+      final Result<void> update}) = _$ProfileStateImpl;
+
+  @override
+  Result<ProfileModel> get profile;
+  @override
+  Result<void> get update;
+  @override
+  @JsonKey(ignore: true)
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

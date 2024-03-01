@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/add/cubits/add_cubit.dart';
 import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
+import 'package:recipe_book/features/profile/cubits/profile_cubit.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
 
 class GlobalCubitProvider extends StatelessWidget {
@@ -26,6 +27,11 @@ class GlobalCubitProvider extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RecipeCubit(
+            context.read(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ProfileCubit(
             context.read(),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/add/views/add_view.dart';
+import 'package:recipe_book/features/profile/cubits/profile_cubit.dart';
 import 'package:recipe_book/features/profile/views/profile_view.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
 import 'package:recipe_book/features/recipe/ui/recipe_list.dart';
@@ -19,14 +20,16 @@ class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
     context.read<RecipeCubit>().getAllRecipes();
+    context.read<ProfileCubit>().getProfile();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final name = context.watch<ProfileCubit>().state.profile.result?.fullName;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Welcome'),
+        title: Text('Welcome $name'),
         centerTitle: false,
       ),
       floatingActionButton: FloatingActionButton(

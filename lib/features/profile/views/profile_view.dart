@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/views/login_view.dart';
+import 'package:recipe_book/features/profile/views/edit_profile_view.dart';
 import 'package:recipe_book/features/recipe/ui/my_recipe.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 
@@ -41,6 +42,13 @@ class _ProfileViewState extends State<ProfileView> {
             ),
           ),
           const SizedBox(height: 32),
+          _ListTile(
+            title: 'Edit Profile',
+            onTap: () {
+              AppRoutes(context).push(const EditProfileView());
+            },
+            icon: Icons.food_bank,
+          ),
           _ListTile(
             title: 'My Recipes',
             onTap: () {

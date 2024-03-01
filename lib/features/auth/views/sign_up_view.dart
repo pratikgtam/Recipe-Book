@@ -45,6 +45,17 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   const SizedBox(height: 24),
                   TextInput(
+                    name: 'fullName',
+                    labelText: 'Full Name',
+                    hintText: 'Enter your full name',
+                    textInputType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
+                  ),
+                  const SizedBox(height: 16),
+                  TextInput(
                     name: 'email',
                     labelText: 'Email',
                     hintText: 'Email',

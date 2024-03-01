@@ -37,6 +37,7 @@ class AuthCubit extends Cubit<AuthState> {
         path: FirebaseAuth.instance.currentUser?.uid,
         data: {
           'email': email,
+          'fullName': formValue['fullName'] as String,
         },
       );
       emit(

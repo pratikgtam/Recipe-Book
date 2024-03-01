@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:recipe_book/features/profile/models/profile_model.dart';
 import 'package:recipe_book/features/recipe/models/recipe_model.dart';
 import 'package:recipe_book/shared/app_constants.dart';
 
@@ -100,5 +101,22 @@ class FirebaseRepository {
     } catch (e, _) {
       rethrow;
     }
+  }
+
+  Future<ProfileModel> getProfile() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    final doc =
+        await db.collection(AppConstants.usersCollectionName).doc(userId).get();
+    final data = doc.data();
+    return ProfileModel.fromJson(data!);
+  }
+
+  Future<void> updateProfile(Map<String, dynamic>? value) {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (value == null) return Future.value();
+    return db
+        .collection(AppConstants.usersCollectionName)
+        .doc(userId)
+        .update(value);
   }
 }
