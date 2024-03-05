@@ -8,7 +8,6 @@ class AuthState with _$AuthState {
   factory AuthState({
     @Default(Result<void>.empty()) Result<void> signupStatus,
     @Default(Result<void>.empty()) Result<void> loginStatus,
-    @Default(Result<void>.empty()) Result<void> googleLoginStatus,
     @Default(Result<void>.empty()) Result<void> resetPasswordStatus,
   }) = _AuthState;
 }

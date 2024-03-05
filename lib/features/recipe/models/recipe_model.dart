@@ -6,7 +6,7 @@ part 'recipe_model.g.dart';
 @freezed
 class RecipeModel with _$RecipeModel {
   factory RecipeModel({
-    @Default('Momo') String? name,
+    @Default('') String? name,
     String? description,
     @Default(
         'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/onboard3.png?alt=media&token=eef49acb-aa0c-45be-8505-2826521d8afe')
