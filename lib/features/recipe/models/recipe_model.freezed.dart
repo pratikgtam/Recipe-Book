@@ -28,6 +28,7 @@ mixin _$RecipeModel {
   String? get steps => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get timeToPrepare => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $RecipeModelCopyWith<$Res> {
       String? ingredients,
       String? steps,
       String? id,
-      String? timeToPrepare});
+      String? timeToPrepare,
+      String? userId});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
     Object? steps = freezed,
     Object? id = freezed,
     Object? timeToPrepare = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -107,6 +110,10 @@ class _$RecipeModelCopyWithImpl<$Res, $Val extends RecipeModel>
           ? _value.timeToPrepare
           : timeToPrepare // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$RecipeModelImplCopyWith<$Res>
       String? ingredients,
       String? steps,
       String? id,
-      String? timeToPrepare});
+      String? timeToPrepare,
+      String? userId});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
     Object? steps = freezed,
     Object? id = freezed,
     Object? timeToPrepare = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_$RecipeModelImpl(
       name: freezed == name
@@ -183,6 +192,10 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
           ? _value.timeToPrepare
           : timeToPrepare // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -191,7 +204,7 @@ class __$$RecipeModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RecipeModelImpl implements _RecipeModel {
   _$RecipeModelImpl(
-      {this.name = 'Momo',
+      {this.name = '',
       this.description,
       this.imageUrl =
           'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/onboard3.png?alt=media&token=eef49acb-aa0c-45be-8505-2826521d8afe',
@@ -199,7 +212,8 @@ class _$RecipeModelImpl implements _RecipeModel {
       this.ingredients,
       this.steps,
       this.id,
-      this.timeToPrepare})
+      this.timeToPrepare,
+      this.userId})
       : _categories = categories;
 
   factory _$RecipeModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -230,10 +244,12 @@ class _$RecipeModelImpl implements _RecipeModel {
   final String? id;
   @override
   final String? timeToPrepare;
+  @override
+  final String? userId;
 
   @override
   String toString() {
-    return 'RecipeModel(name: $name, description: $description, imageUrl: $imageUrl, categories: $categories, ingredients: $ingredients, steps: $steps, id: $id, timeToPrepare: $timeToPrepare)';
+    return 'RecipeModel(name: $name, description: $description, imageUrl: $imageUrl, categories: $categories, ingredients: $ingredients, steps: $steps, id: $id, timeToPrepare: $timeToPrepare, userId: $userId)';
   }
 
   @override
@@ -253,7 +269,8 @@ class _$RecipeModelImpl implements _RecipeModel {
             (identical(other.steps, steps) || other.steps == steps) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.timeToPrepare, timeToPrepare) ||
-                other.timeToPrepare == timeToPrepare));
+                other.timeToPrepare == timeToPrepare) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
@@ -267,7 +284,8 @@ class _$RecipeModelImpl implements _RecipeModel {
       ingredients,
       steps,
       id,
-      timeToPrepare);
+      timeToPrepare,
+      userId);
 
   @JsonKey(ignore: true)
   @override
@@ -292,7 +310,8 @@ abstract class _RecipeModel implements RecipeModel {
       final String? ingredients,
       final String? steps,
       final String? id,
-      final String? timeToPrepare}) = _$RecipeModelImpl;
+      final String? timeToPrepare,
+      final String? userId}) = _$RecipeModelImpl;
 
   factory _RecipeModel.fromJson(Map<String, dynamic> json) =
       _$RecipeModelImpl.fromJson;
@@ -313,6 +332,8 @@ abstract class _RecipeModel implements RecipeModel {
   String? get id;
   @override
   String? get timeToPrepare;
+  @override
+  String? get userId;
   @override
   @JsonKey(ignore: true)
   _$$RecipeModelImplCopyWith<_$RecipeModelImpl> get copyWith =>

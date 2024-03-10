@@ -43,6 +43,9 @@ class AddCubit extends Cubit<AddState> {
       final Map<String, dynamic> value = Map<String, dynamic>.from(formData);
       value['imageUrl'] = state.imageUrl;
       value['categories'] = state.categories;
+      value['createdAt'] = DateTime.now();
+      value['updatedAt'] = DateTime.now();
+
       await repository.addRecipe(value);
       emit(state.copyWith(addState: const Result<void>.success(null)));
     } catch (e, _) {

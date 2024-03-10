@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_book/features/profile/models/profile_model.dart';
+import 'package:recipe_book/features/profile/views/profile_detail_view.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
+import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/image.dart';
 
@@ -11,13 +14,26 @@ class RecipeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final recipe = context.watch<RecipeCubit>().state.selectedRecipe;
+    final state = context.watch<RecipeCubit>().state;
+    final recipe = state.selectedRecipe;
+    final profile = state.profile;
+
     return CustomScaffold(
       title: recipe?.name,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          AppRoutes(context).push(ProfileDetailView(
+            profile: profile,
+          ));
+        },
+        child: const Icon(Icons.favorite_border),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Profile(profile: profile),
+            const SizedBox(height: 10),
             if (recipe?.imageUrl != null)
               CustomNetworkImage(
                 imageUrl: recipe?.imageUrl,
@@ -98,6 +114,39 @@ class RecipeDetailsPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Profile extends StatelessWidget {
+  const Profile({
+    super.key,
+    this.profile,
+  });
+  final ProfileModel? profile;
+  @override
+  Widget build(BuildContext context) {
+    if (profile == null) return const SizedBox();
+    return InkWell(
+      onTap: () {
+        AppRoutes(context).push(ProfileDetailView(
+          profile: profile,
+        ));
+      },
+      child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        Icon(
+          Icons.account_circle_outlined,
+          size: 40,
+          color: Colors.black.withOpacity(0.5),
+        ),
+        const SizedBox(width: 5),
+        Text(
+          profile?.fullName ?? '',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ]),
     );
   }
 }

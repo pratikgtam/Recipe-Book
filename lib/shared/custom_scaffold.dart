@@ -11,6 +11,7 @@ class CustomScaffold extends StatelessWidget {
     this.bottom,
     this.appBar,
     this.actions,
+    this.floatingActionButton,
   });
   final String? title;
   final Widget body;
@@ -20,10 +21,12 @@ class CustomScaffold extends StatelessWidget {
   final PreferredSizeWidget? bottom;
   final PreferredSizeWidget? appBar;
   final List<Widget>? actions;
+  final Widget? floatingActionButton;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: floatingActionButton,
       appBar: AppBar(
         titleSpacing: 0,
         actions: actions,

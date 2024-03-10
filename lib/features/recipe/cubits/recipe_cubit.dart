@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_state.dart';
 import 'package:recipe_book/features/recipe/models/recipe_model.dart';
@@ -48,7 +50,16 @@ class RecipeCubit extends Cubit<RecipeState> {
   }
 
   Future<void> setSelectedRecipe(RecipeModel recipe) async {
-    emit(state.copyWith(selectedRecipe: recipe));
+    try {
+      emit(state.copyWith(selectedRecipe: recipe));
+
+      final profile = await repository.getProfileWithId(recipe.userId);
+      emit(state.copyWith(profile: profile));
+    } catch (e) {
+      emit(state.copyWith(
+        profile: null,
+      ));
+    }
   }
 
   void selectCategory(String category) {
@@ -62,5 +73,15 @@ class RecipeCubit extends Cubit<RecipeState> {
           .toList();
       emit(state.copyWith(recipes: Result.success(filteredRecipes)));
     }
+  }
+
+  void search(value) {
+    log('searching for $value');
+    final recipes = state.allRecipes;
+    final filteredRecipes = recipes
+        .where((recipe) =>
+            recipe.name?.toLowerCase().contains(value.toLowerCase()) ?? false)
+        .toList();
+    emit(state.copyWith(recipes: Result.success(filteredRecipes)));
   }
 }

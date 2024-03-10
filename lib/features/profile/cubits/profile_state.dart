@@ -10,5 +10,6 @@ class ProfileState with _$ProfileState {
     @Default(Result<ProfileModel>.empty()) Result<ProfileModel> profile,
     @Default(Result<void>.empty()) Result<void> update,
     @Default(Result<void>.empty()) Result<void> profilePic,
+    @Default(Result<ProfileModel>.empty()) Result<ProfileModel> profileWithId,
   }) = _ProfileState;
 }

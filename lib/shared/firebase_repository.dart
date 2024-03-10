@@ -93,6 +93,7 @@ class FirebaseRepository {
   Future<void> addRecipe(Map<String, dynamic> data) async {
     try {
       final userId = FirebaseAuth.instance.currentUser?.uid;
+      data['userId'] = userId;
       await db
           .collection(AppConstants.usersCollectionName)
           .doc(userId)
@@ -118,5 +119,20 @@ class FirebaseRepository {
         .collection(AppConstants.usersCollectionName)
         .doc(userId)
         .set(value, SetOptions(merge: true));
+  }
+
+  Future<ProfileModel> getProfileWithId(String? id) async {
+    final response =
+        await db.collection(AppConstants.usersCollectionName).doc(id).get();
+    final data = response.data();
+    return ProfileModel.fromJson({
+      ...data!,
+      'id': response.id,
+    });
+
+    // .then((value) => ProfileModel.fromJson({
+    //       ...value.data()!,
+    //       'id': value.id,
+    //     }));
   }
 }

@@ -16,6 +16,7 @@ class RecipeModel with _$RecipeModel {
     String? steps,
     String? id,
     String? timeToPrepare,
+    String? userId,
   }) = _RecipeModel;
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) =>

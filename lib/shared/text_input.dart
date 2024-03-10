@@ -17,7 +17,9 @@ class TextInput extends StatelessWidget {
     this.maxLines = 1,
     this.suffixText,
     this.readOnly = false,
+    this.onChanged,
   });
+  final Null Function(dynamic value)? onChanged;
 
   final String name;
   final String? labelText;
@@ -55,6 +57,7 @@ class TextInput extends StatelessWidget {
           initialValue: initialValue,
           maxLines: maxLines,
           name: name,
+          onChanged: onChanged,
           readOnly: readOnly,
           style: const TextStyle(
             fontWeight: FontWeight.w600,

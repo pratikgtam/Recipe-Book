@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthState {
   Result<void> get signupStatus => throw _privateConstructorUsedError;
   Result<void> get loginStatus => throw _privateConstructorUsedError;
-  Result<void> get googleLoginStatus => throw _privateConstructorUsedError;
   Result<void> get resetPasswordStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,12 +33,10 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {Result<void> signupStatus,
       Result<void> loginStatus,
-      Result<void> googleLoginStatus,
       Result<void> resetPasswordStatus});
 
   $ResultCopyWith<void, $Res> get signupStatus;
   $ResultCopyWith<void, $Res> get loginStatus;
-  $ResultCopyWith<void, $Res> get googleLoginStatus;
   $ResultCopyWith<void, $Res> get resetPasswordStatus;
 }
 
@@ -58,7 +55,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? signupStatus = null,
     Object? loginStatus = null,
-    Object? googleLoginStatus = null,
     Object? resetPasswordStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -69,10 +65,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
-              as Result<void>,
-      googleLoginStatus: null == googleLoginStatus
-          ? _value.googleLoginStatus
-          : googleLoginStatus // ignore: cast_nullable_to_non_nullable
               as Result<void>,
       resetPasswordStatus: null == resetPasswordStatus
           ? _value.resetPasswordStatus
@@ -99,14 +91,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ResultCopyWith<void, $Res> get googleLoginStatus {
-    return $ResultCopyWith<void, $Res>(_value.googleLoginStatus, (value) {
-      return _then(_value.copyWith(googleLoginStatus: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
   $ResultCopyWith<void, $Res> get resetPasswordStatus {
     return $ResultCopyWith<void, $Res>(_value.resetPasswordStatus, (value) {
       return _then(_value.copyWith(resetPasswordStatus: value) as $Val);
@@ -125,15 +109,12 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   $Res call(
       {Result<void> signupStatus,
       Result<void> loginStatus,
-      Result<void> googleLoginStatus,
       Result<void> resetPasswordStatus});
 
   @override
   $ResultCopyWith<void, $Res> get signupStatus;
   @override
   $ResultCopyWith<void, $Res> get loginStatus;
-  @override
-  $ResultCopyWith<void, $Res> get googleLoginStatus;
   @override
   $ResultCopyWith<void, $Res> get resetPasswordStatus;
 }
@@ -151,7 +132,6 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   $Res call({
     Object? signupStatus = null,
     Object? loginStatus = null,
-    Object? googleLoginStatus = null,
     Object? resetPasswordStatus = null,
   }) {
     return _then(_$AuthStateImpl(
@@ -162,10 +142,6 @@ class __$$AuthStateImplCopyWithImpl<$Res>
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
-              as Result<void>,
-      googleLoginStatus: null == googleLoginStatus
-          ? _value.googleLoginStatus
-          : googleLoginStatus // ignore: cast_nullable_to_non_nullable
               as Result<void>,
       resetPasswordStatus: null == resetPasswordStatus
           ? _value.resetPasswordStatus
@@ -181,7 +157,6 @@ class _$AuthStateImpl implements _AuthState {
   _$AuthStateImpl(
       {this.signupStatus = const Result<void>.empty(),
       this.loginStatus = const Result<void>.empty(),
-      this.googleLoginStatus = const Result<void>.empty(),
       this.resetPasswordStatus = const Result<void>.empty()});
 
   @override
@@ -192,14 +167,11 @@ class _$AuthStateImpl implements _AuthState {
   final Result<void> loginStatus;
   @override
   @JsonKey()
-  final Result<void> googleLoginStatus;
-  @override
-  @JsonKey()
   final Result<void> resetPasswordStatus;
 
   @override
   String toString() {
-    return 'AuthState(signupStatus: $signupStatus, loginStatus: $loginStatus, googleLoginStatus: $googleLoginStatus, resetPasswordStatus: $resetPasswordStatus)';
+    return 'AuthState(signupStatus: $signupStatus, loginStatus: $loginStatus, resetPasswordStatus: $resetPasswordStatus)';
   }
 
   @override
@@ -211,15 +183,13 @@ class _$AuthStateImpl implements _AuthState {
                 other.signupStatus == signupStatus) &&
             (identical(other.loginStatus, loginStatus) ||
                 other.loginStatus == loginStatus) &&
-            (identical(other.googleLoginStatus, googleLoginStatus) ||
-                other.googleLoginStatus == googleLoginStatus) &&
             (identical(other.resetPasswordStatus, resetPasswordStatus) ||
                 other.resetPasswordStatus == resetPasswordStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, signupStatus, loginStatus,
-      googleLoginStatus, resetPasswordStatus);
+  int get hashCode =>
+      Object.hash(runtimeType, signupStatus, loginStatus, resetPasswordStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -232,15 +202,12 @@ abstract class _AuthState implements AuthState {
   factory _AuthState(
       {final Result<void> signupStatus,
       final Result<void> loginStatus,
-      final Result<void> googleLoginStatus,
       final Result<void> resetPasswordStatus}) = _$AuthStateImpl;
 
   @override
   Result<void> get signupStatus;
   @override
   Result<void> get loginStatus;
-  @override
-  Result<void> get googleLoginStatus;
   @override
   Result<void> get resetPasswordStatus;
   @override

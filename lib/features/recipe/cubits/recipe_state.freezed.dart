@@ -22,6 +22,7 @@ mixin _$RecipeState {
   List<RecipeModel> get allRecipes => throw _privateConstructorUsedError;
   RecipeModel? get selectedRecipe => throw _privateConstructorUsedError;
   String get selectedCategory => throw _privateConstructorUsedError;
+  ProfileModel? get profile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeStateCopyWith<RecipeState> get copyWith =>
@@ -39,11 +40,13 @@ abstract class $RecipeStateCopyWith<$Res> {
       Result<List<RecipeModel>> recipes,
       List<RecipeModel> allRecipes,
       RecipeModel? selectedRecipe,
-      String selectedCategory});
+      String selectedCategory,
+      ProfileModel? profile});
 
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
   $ResultCopyWith<List<RecipeModel>, $Res> get recipes;
   $RecipeModelCopyWith<$Res>? get selectedRecipe;
+  $ProfileModelCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
     Object? allRecipes = null,
     Object? selectedRecipe = freezed,
     Object? selectedCategory = null,
+    Object? profile = freezed,
   }) {
     return _then(_value.copyWith(
       userRecipes: null == userRecipes
@@ -86,6 +90,10 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
           ? _value.selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as ProfileModel?,
     ) as $Val);
   }
 
@@ -117,6 +125,18 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
       return _then(_value.copyWith(selectedRecipe: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileModelCopyWith<$Res>? get profile {
+    if (_value.profile == null) {
+      return null;
+    }
+
+    return $ProfileModelCopyWith<$Res>(_value.profile!, (value) {
+      return _then(_value.copyWith(profile: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -132,7 +152,8 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
       Result<List<RecipeModel>> recipes,
       List<RecipeModel> allRecipes,
       RecipeModel? selectedRecipe,
-      String selectedCategory});
+      String selectedCategory,
+      ProfileModel? profile});
 
   @override
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
@@ -140,6 +161,8 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
   $ResultCopyWith<List<RecipeModel>, $Res> get recipes;
   @override
   $RecipeModelCopyWith<$Res>? get selectedRecipe;
+  @override
+  $ProfileModelCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -158,6 +181,7 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
     Object? allRecipes = null,
     Object? selectedRecipe = freezed,
     Object? selectedCategory = null,
+    Object? profile = freezed,
   }) {
     return _then(_$RecipeStateImpl(
       userRecipes: null == userRecipes
@@ -180,6 +204,10 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
           ? _value.selectedCategory
           : selectedCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as ProfileModel?,
     ));
   }
 }
@@ -192,7 +220,8 @@ class _$RecipeStateImpl implements _RecipeState {
       this.recipes = const Result<List<RecipeModel>>.empty(),
       final List<RecipeModel> allRecipes = const [],
       this.selectedRecipe,
-      this.selectedCategory = 'All'})
+      this.selectedCategory = 'All',
+      this.profile})
       : _allRecipes = allRecipes;
 
   @override
@@ -215,10 +244,12 @@ class _$RecipeStateImpl implements _RecipeState {
   @override
   @JsonKey()
   final String selectedCategory;
+  @override
+  final ProfileModel? profile;
 
   @override
   String toString() {
-    return 'RecipeState(userRecipes: $userRecipes, recipes: $recipes, allRecipes: $allRecipes, selectedRecipe: $selectedRecipe, selectedCategory: $selectedCategory)';
+    return 'RecipeState(userRecipes: $userRecipes, recipes: $recipes, allRecipes: $allRecipes, selectedRecipe: $selectedRecipe, selectedCategory: $selectedCategory, profile: $profile)';
   }
 
   @override
@@ -234,7 +265,8 @@ class _$RecipeStateImpl implements _RecipeState {
             (identical(other.selectedRecipe, selectedRecipe) ||
                 other.selectedRecipe == selectedRecipe) &&
             (identical(other.selectedCategory, selectedCategory) ||
-                other.selectedCategory == selectedCategory));
+                other.selectedCategory == selectedCategory) &&
+            (identical(other.profile, profile) || other.profile == profile));
   }
 
   @override
@@ -244,7 +276,8 @@ class _$RecipeStateImpl implements _RecipeState {
       recipes,
       const DeepCollectionEquality().hash(_allRecipes),
       selectedRecipe,
-      selectedCategory);
+      selectedCategory,
+      profile);
 
   @JsonKey(ignore: true)
   @override
@@ -259,7 +292,8 @@ abstract class _RecipeState implements RecipeState {
       final Result<List<RecipeModel>> recipes,
       final List<RecipeModel> allRecipes,
       final RecipeModel? selectedRecipe,
-      final String selectedCategory}) = _$RecipeStateImpl;
+      final String selectedCategory,
+      final ProfileModel? profile}) = _$RecipeStateImpl;
 
   @override
   Result<List<RecipeModel>> get userRecipes;
@@ -271,6 +305,8 @@ abstract class _RecipeState implements RecipeState {
   RecipeModel? get selectedRecipe;
   @override
   String get selectedCategory;
+  @override
+  ProfileModel? get profile;
   @override
   @JsonKey(ignore: true)
   _$$RecipeStateImplCopyWith<_$RecipeStateImpl> get copyWith =>

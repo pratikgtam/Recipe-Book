@@ -8,7 +8,7 @@ part of 'recipe_model.dart';
 
 _$RecipeModelImpl _$$RecipeModelImplFromJson(Map<String, dynamic> json) =>
     _$RecipeModelImpl(
-      name: json['name'] as String? ?? 'Momo',
+      name: json['name'] as String? ?? '',
       description: json['description'] as String?,
       imageUrl: json['imageUrl'] as String? ??
           'https://firebasestorage.googleapis.com/v0/b/mdev-recipe-book.appspot.com/o/onboard3.png?alt=media&token=eef49acb-aa0c-45be-8505-2826521d8afe',
@@ -20,6 +20,7 @@ _$RecipeModelImpl _$$RecipeModelImplFromJson(Map<String, dynamic> json) =>
       steps: json['steps'] as String?,
       id: json['id'] as String?,
       timeToPrepare: json['timeToPrepare'] as String?,
+      userId: json['userId'] as String?,
     );
 
 Map<String, dynamic> _$$RecipeModelImplToJson(_$RecipeModelImpl instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$RecipeModelImplToJson(_$RecipeModelImpl instance) =>
       'steps': instance.steps,
       'id': instance.id,
       'timeToPrepare': instance.timeToPrepare,
+      'userId': instance.userId,
     };

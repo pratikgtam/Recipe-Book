@@ -19,6 +19,7 @@ mixin _$ProfileState {
   Result<ProfileModel> get profile => throw _privateConstructorUsedError;
   Result<void> get update => throw _privateConstructorUsedError;
   Result<void> get profilePic => throw _privateConstructorUsedError;
+  Result<ProfileModel> get profileWithId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -34,11 +35,13 @@ abstract class $ProfileStateCopyWith<$Res> {
   $Res call(
       {Result<ProfileModel> profile,
       Result<void> update,
-      Result<void> profilePic});
+      Result<void> profilePic,
+      Result<ProfileModel> profileWithId});
 
   $ResultCopyWith<ProfileModel, $Res> get profile;
   $ResultCopyWith<void, $Res> get update;
   $ResultCopyWith<void, $Res> get profilePic;
+  $ResultCopyWith<ProfileModel, $Res> get profileWithId;
 }
 
 /// @nodoc
@@ -57,6 +60,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? profile = null,
     Object? update = null,
     Object? profilePic = null,
+    Object? profileWithId = null,
   }) {
     return _then(_value.copyWith(
       profile: null == profile
@@ -71,6 +75,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
               as Result<void>,
+      profileWithId: null == profileWithId
+          ? _value.profileWithId
+          : profileWithId // ignore: cast_nullable_to_non_nullable
+              as Result<ProfileModel>,
     ) as $Val);
   }
 
@@ -97,6 +105,14 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       return _then(_value.copyWith(profilePic: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultCopyWith<ProfileModel, $Res> get profileWithId {
+    return $ResultCopyWith<ProfileModel, $Res>(_value.profileWithId, (value) {
+      return _then(_value.copyWith(profileWithId: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -110,7 +126,8 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   $Res call(
       {Result<ProfileModel> profile,
       Result<void> update,
-      Result<void> profilePic});
+      Result<void> profilePic,
+      Result<ProfileModel> profileWithId});
 
   @override
   $ResultCopyWith<ProfileModel, $Res> get profile;
@@ -118,6 +135,8 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   $ResultCopyWith<void, $Res> get update;
   @override
   $ResultCopyWith<void, $Res> get profilePic;
+  @override
+  $ResultCopyWith<ProfileModel, $Res> get profileWithId;
 }
 
 /// @nodoc
@@ -134,6 +153,7 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     Object? profile = null,
     Object? update = null,
     Object? profilePic = null,
+    Object? profileWithId = null,
   }) {
     return _then(_$ProfileStateImpl(
       profile: null == profile
@@ -148,6 +168,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
               as Result<void>,
+      profileWithId: null == profileWithId
+          ? _value.profileWithId
+          : profileWithId // ignore: cast_nullable_to_non_nullable
+              as Result<ProfileModel>,
     ));
   }
 }
@@ -158,7 +182,8 @@ class _$ProfileStateImpl implements _ProfileState {
   _$ProfileStateImpl(
       {this.profile = const Result<ProfileModel>.empty(),
       this.update = const Result<void>.empty(),
-      this.profilePic = const Result<void>.empty()});
+      this.profilePic = const Result<void>.empty(),
+      this.profileWithId = const Result<ProfileModel>.empty()});
 
   @override
   @JsonKey()
@@ -169,10 +194,13 @@ class _$ProfileStateImpl implements _ProfileState {
   @override
   @JsonKey()
   final Result<void> profilePic;
+  @override
+  @JsonKey()
+  final Result<ProfileModel> profileWithId;
 
   @override
   String toString() {
-    return 'ProfileState(profile: $profile, update: $update, profilePic: $profilePic)';
+    return 'ProfileState(profile: $profile, update: $update, profilePic: $profilePic, profileWithId: $profileWithId)';
   }
 
   @override
@@ -183,11 +211,14 @@ class _$ProfileStateImpl implements _ProfileState {
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.update, update) || other.update == update) &&
             (identical(other.profilePic, profilePic) ||
-                other.profilePic == profilePic));
+                other.profilePic == profilePic) &&
+            (identical(other.profileWithId, profileWithId) ||
+                other.profileWithId == profileWithId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile, update, profilePic);
+  int get hashCode =>
+      Object.hash(runtimeType, profile, update, profilePic, profileWithId);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +231,8 @@ abstract class _ProfileState implements ProfileState {
   factory _ProfileState(
       {final Result<ProfileModel> profile,
       final Result<void> update,
-      final Result<void> profilePic}) = _$ProfileStateImpl;
+      final Result<void> profilePic,
+      final Result<ProfileModel> profileWithId}) = _$ProfileStateImpl;
 
   @override
   Result<ProfileModel> get profile;
@@ -208,6 +240,8 @@ abstract class _ProfileState implements ProfileState {
   Result<void> get update;
   @override
   Result<void> get profilePic;
+  @override
+  Result<ProfileModel> get profileWithId;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

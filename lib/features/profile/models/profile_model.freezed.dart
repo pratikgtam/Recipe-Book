@@ -23,6 +23,7 @@ mixin _$ProfileModel {
   String? get fullName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get profilePic => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $ProfileModelCopyWith<$Res> {
           ProfileModel value, $Res Function(ProfileModel) then) =
       _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
-  $Res call({String? fullName, String? email, String? profilePic});
+  $Res call({String? fullName, String? email, String? profilePic, String? id});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
     Object? fullName = freezed,
     Object? email = freezed,
     Object? profilePic = freezed,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
       fullName: freezed == fullName
@@ -69,6 +71,10 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +87,7 @@ abstract class _$$ProfileModelImplCopyWith<$Res>
       __$$ProfileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? fullName, String? email, String? profilePic});
+  $Res call({String? fullName, String? email, String? profilePic, String? id});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
     Object? fullName = freezed,
     Object? email = freezed,
     Object? profilePic = freezed,
+    Object? id = freezed,
   }) {
     return _then(_$ProfileModelImpl(
       fullName: freezed == fullName
@@ -112,6 +119,10 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
           ? _value.profilePic
           : profilePic // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +130,7 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ProfileModelImpl implements _ProfileModel {
-  _$ProfileModelImpl({this.fullName, this.email, this.profilePic});
+  _$ProfileModelImpl({this.fullName, this.email, this.profilePic, this.id});
 
   factory _$ProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileModelImplFromJson(json);
@@ -130,10 +141,12 @@ class _$ProfileModelImpl implements _ProfileModel {
   final String? email;
   @override
   final String? profilePic;
+  @override
+  final String? id;
 
   @override
   String toString() {
-    return 'ProfileModel(fullName: $fullName, email: $email, profilePic: $profilePic)';
+    return 'ProfileModel(fullName: $fullName, email: $email, profilePic: $profilePic, id: $id)';
   }
 
   @override
@@ -145,12 +158,13 @@ class _$ProfileModelImpl implements _ProfileModel {
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.profilePic, profilePic) ||
-                other.profilePic == profilePic));
+                other.profilePic == profilePic) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, fullName, email, profilePic);
+  int get hashCode => Object.hash(runtimeType, fullName, email, profilePic, id);
 
   @JsonKey(ignore: true)
   @override
@@ -170,7 +184,8 @@ abstract class _ProfileModel implements ProfileModel {
   factory _ProfileModel(
       {final String? fullName,
       final String? email,
-      final String? profilePic}) = _$ProfileModelImpl;
+      final String? profilePic,
+      final String? id}) = _$ProfileModelImpl;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$ProfileModelImpl.fromJson;
@@ -181,6 +196,8 @@ abstract class _ProfileModel implements ProfileModel {
   String? get email;
   @override
   String? get profilePic;
+  @override
+  String? get id;
   @override
   @JsonKey(ignore: true)
   _$$ProfileModelImplCopyWith<_$ProfileModelImpl> get copyWith =>

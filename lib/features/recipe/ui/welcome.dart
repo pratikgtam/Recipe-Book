@@ -7,6 +7,7 @@ import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
 import 'package:recipe_book/features/recipe/ui/recipe_list.dart';
 import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/app_routes.dart';
+import 'package:recipe_book/shared/text_input.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -78,7 +79,21 @@ class Home extends StatelessWidget {
     final state = context.watch<RecipeCubit>().state.recipes;
     return Column(
       children: [
-        const _BrandsList(),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppConstants.horizontalScreenPadding),
+          child: TextInput(
+              name: 'Search',
+              hintText: 'Search for recipes',
+              onChanged: (value) {
+                context.read<RecipeCubit>().search(value);
+              }),
+        ),
+        const SizedBox(height: 12),
+        const Padding(
+          padding: EdgeInsets.only(left: 12.0),
+          child: _BrandsList(),
+        ),
         if (state.isLoading)
           const Center(
             child: CircularProgressIndicator(),
