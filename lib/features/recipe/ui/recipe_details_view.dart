@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_book/features/profile/models/profile_model.dart';
 import 'package:recipe_book/features/profile/views/profile_detail_view.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_cubit.dart';
+import 'package:recipe_book/features/recipe/ui/favourite_recipe.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 import 'package:recipe_book/shared/custom_scaffold.dart';
 import 'package:recipe_book/shared/image.dart';
@@ -20,13 +21,21 @@ class RecipeDetailsPage extends StatelessWidget {
 
     return CustomScaffold(
       title: recipe?.name,
+      actions: [
+        IconButton(
+          onPressed: () {
+            AppRoutes(context).push(const FavouriteRecipeScreen());
+          },
+          icon: const Icon(Icons.favorite),
+        ),
+      ],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          AppRoutes(context).push(ProfileDetailView(
-            profile: profile,
-          ));
+          context.read<RecipeCubit>().toggleFavorite(recipe);
         },
-        child: const Icon(Icons.favorite_border),
+        child: Icon(
+          state.isFavorite(recipe) ? Icons.favorite : Icons.favorite_border,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

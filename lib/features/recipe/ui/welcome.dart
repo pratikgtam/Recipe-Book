@@ -85,6 +85,7 @@ class Home extends StatelessWidget {
           child: TextInput(
               name: 'Search',
               hintText: 'Search for recipes',
+              autofocus: false,
               onChanged: (value) {
                 context.read<RecipeCubit>().search(value);
               }),

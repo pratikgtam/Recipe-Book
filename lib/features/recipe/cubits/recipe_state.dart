@@ -16,5 +16,12 @@ class RecipeState with _$RecipeState {
     RecipeModel? selectedRecipe,
     @Default('All') String selectedCategory,
     ProfileModel? profile,
+    @Default([]) List<RecipeModel> favoriteRecipes,
   }) = _RecipeState;
+
+  RecipeState._();
+
+  bool isFavorite(RecipeModel? recipe) {
+    return favoriteRecipes.contains(recipe);
+  }
 }

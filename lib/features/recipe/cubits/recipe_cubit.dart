@@ -84,4 +84,18 @@ class RecipeCubit extends Cubit<RecipeState> {
         .toList();
     emit(state.copyWith(recipes: Result.success(filteredRecipes)));
   }
+
+  void toggleFavorite(RecipeModel? recipe) {
+    if (recipe == null) return;
+    final isFavorite = state.isFavorite(recipe);
+    if (isFavorite) {
+      final updatedFavorites = state.favoriteRecipes
+          .where((element) => element.id != recipe.id)
+          .toList();
+      emit(state.copyWith(favoriteRecipes: updatedFavorites));
+    } else {
+      final updatedFavorites = [...state.favoriteRecipes, recipe];
+      emit(state.copyWith(favoriteRecipes: updatedFavorites));
+    }
+  }
 }
