@@ -5,6 +5,7 @@ import 'package:recipe_book/features/auth/views/login_view.dart';
 import 'package:recipe_book/features/profile/cubits/profile_cubit.dart';
 import 'package:recipe_book/features/profile/views/edit_profile_view.dart';
 import 'package:recipe_book/features/profile/views/profile_detail_view.dart';
+import 'package:recipe_book/features/recipe/ui/favourite_recipe.dart';
 import 'package:recipe_book/features/recipe/ui/my_recipe.dart';
 import 'package:recipe_book/shared/app_routes.dart';
 
@@ -57,7 +58,14 @@ class _ProfileViewState extends State<ProfileView> {
             onTap: () {
               AppRoutes(context).push(const MyRecipe());
             },
-            icon: Icons.food_bank,
+            icon: Icons.food_bank_outlined,
+          ),
+          _ListTile(
+            title: 'Favorites',
+            onTap: () {
+              AppRoutes(context).push(const FavouriteRecipeScreen());
+            },
+            icon: Icons.favorite_outline,
           ),
           _ListTile(
             title: 'Notifications',

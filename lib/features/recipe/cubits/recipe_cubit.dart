@@ -98,4 +98,8 @@ class RecipeCubit extends Cubit<RecipeState> {
       emit(state.copyWith(favoriteRecipes: updatedFavorites));
     }
   }
+
+  void clearFavourite() {
+    emit(state.copyWith(favoriteRecipes: []));
+  }
 }

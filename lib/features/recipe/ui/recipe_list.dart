@@ -12,9 +12,11 @@ class RecipeList extends StatelessWidget {
     super.key,
     required this.recipes,
     this.gridView = true,
+    this.isFavorite = false,
   });
   final List<RecipeModel> recipes;
   final bool gridView;
+  final bool isFavorite;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -53,7 +55,36 @@ class RecipeList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     RecipeModel recipe = recipes[index];
 
-                    return _Recipe(recipe: recipe);
+                    return Stack(
+                      alignment: Alignment.topRight,
+                      children: [
+                        _Recipe(recipe: recipe),
+                        if (isFavorite)
+                          Container(
+                            margin: const EdgeInsets.all(
+                              4,
+                            ),
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<RecipeCubit>()
+                                    .toggleFavorite(recipe);
+                              },
+                              icon: const Icon(
+                                size: 22,
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                      ],
+                    );
                   }),
     );
   }
