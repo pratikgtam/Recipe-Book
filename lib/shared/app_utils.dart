@@ -71,3 +71,9 @@ class AppUtils {
     return '\$${(cents / 100).toStringAsFixed(2).replaceAll('.', ',')}';
   }
 }
+
+extension DateExtension on DateTime {
+  String get toDisplay {
+    return '${day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year';
+  }
+}

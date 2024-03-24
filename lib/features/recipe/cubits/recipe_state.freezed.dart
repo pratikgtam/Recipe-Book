@@ -24,6 +24,8 @@ mixin _$RecipeState {
   String get selectedCategory => throw _privateConstructorUsedError;
   ProfileModel? get profile => throw _privateConstructorUsedError;
   List<RecipeModel> get favoriteRecipes => throw _privateConstructorUsedError;
+  List<CommentsModel> get comments => throw _privateConstructorUsedError;
+  List<CommentsModel> get allComments => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeStateCopyWith<RecipeState> get copyWith =>
@@ -43,7 +45,9 @@ abstract class $RecipeStateCopyWith<$Res> {
       RecipeModel? selectedRecipe,
       String selectedCategory,
       ProfileModel? profile,
-      List<RecipeModel> favoriteRecipes});
+      List<RecipeModel> favoriteRecipes,
+      List<CommentsModel> comments,
+      List<CommentsModel> allComments});
 
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
   $ResultCopyWith<List<RecipeModel>, $Res> get recipes;
@@ -71,6 +75,8 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
     Object? selectedCategory = null,
     Object? profile = freezed,
     Object? favoriteRecipes = null,
+    Object? comments = null,
+    Object? allComments = null,
   }) {
     return _then(_value.copyWith(
       userRecipes: null == userRecipes
@@ -101,6 +107,14 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
           ? _value.favoriteRecipes
           : favoriteRecipes // ignore: cast_nullable_to_non_nullable
               as List<RecipeModel>,
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentsModel>,
+      allComments: null == allComments
+          ? _value.allComments
+          : allComments // ignore: cast_nullable_to_non_nullable
+              as List<CommentsModel>,
     ) as $Val);
   }
 
@@ -161,7 +175,9 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
       RecipeModel? selectedRecipe,
       String selectedCategory,
       ProfileModel? profile,
-      List<RecipeModel> favoriteRecipes});
+      List<RecipeModel> favoriteRecipes,
+      List<CommentsModel> comments,
+      List<CommentsModel> allComments});
 
   @override
   $ResultCopyWith<List<RecipeModel>, $Res> get userRecipes;
@@ -191,6 +207,8 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
     Object? selectedCategory = null,
     Object? profile = freezed,
     Object? favoriteRecipes = null,
+    Object? comments = null,
+    Object? allComments = null,
   }) {
     return _then(_$RecipeStateImpl(
       userRecipes: null == userRecipes
@@ -221,6 +239,14 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
           ? _value._favoriteRecipes
           : favoriteRecipes // ignore: cast_nullable_to_non_nullable
               as List<RecipeModel>,
+      comments: null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentsModel>,
+      allComments: null == allComments
+          ? _value._allComments
+          : allComments // ignore: cast_nullable_to_non_nullable
+              as List<CommentsModel>,
     ));
   }
 }
@@ -235,9 +261,13 @@ class _$RecipeStateImpl extends _RecipeState {
       this.selectedRecipe,
       this.selectedCategory = 'All',
       this.profile,
-      final List<RecipeModel> favoriteRecipes = const []})
+      final List<RecipeModel> favoriteRecipes = const [],
+      final List<CommentsModel> comments = const [],
+      final List<CommentsModel> allComments = const []})
       : _allRecipes = allRecipes,
         _favoriteRecipes = favoriteRecipes,
+        _comments = comments,
+        _allComments = allComments,
         super._();
 
   @override
@@ -271,9 +301,27 @@ class _$RecipeStateImpl extends _RecipeState {
     return EqualUnmodifiableListView(_favoriteRecipes);
   }
 
+  final List<CommentsModel> _comments;
+  @override
+  @JsonKey()
+  List<CommentsModel> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
+  final List<CommentsModel> _allComments;
+  @override
+  @JsonKey()
+  List<CommentsModel> get allComments {
+    if (_allComments is EqualUnmodifiableListView) return _allComments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allComments);
+  }
+
   @override
   String toString() {
-    return 'RecipeState(userRecipes: $userRecipes, recipes: $recipes, allRecipes: $allRecipes, selectedRecipe: $selectedRecipe, selectedCategory: $selectedCategory, profile: $profile, favoriteRecipes: $favoriteRecipes)';
+    return 'RecipeState(userRecipes: $userRecipes, recipes: $recipes, allRecipes: $allRecipes, selectedRecipe: $selectedRecipe, selectedCategory: $selectedCategory, profile: $profile, favoriteRecipes: $favoriteRecipes, comments: $comments, allComments: $allComments)';
   }
 
   @override
@@ -292,7 +340,10 @@ class _$RecipeStateImpl extends _RecipeState {
                 other.selectedCategory == selectedCategory) &&
             (identical(other.profile, profile) || other.profile == profile) &&
             const DeepCollectionEquality()
-                .equals(other._favoriteRecipes, _favoriteRecipes));
+                .equals(other._favoriteRecipes, _favoriteRecipes) &&
+            const DeepCollectionEquality().equals(other._comments, _comments) &&
+            const DeepCollectionEquality()
+                .equals(other._allComments, _allComments));
   }
 
   @override
@@ -304,7 +355,9 @@ class _$RecipeStateImpl extends _RecipeState {
       selectedRecipe,
       selectedCategory,
       profile,
-      const DeepCollectionEquality().hash(_favoriteRecipes));
+      const DeepCollectionEquality().hash(_favoriteRecipes),
+      const DeepCollectionEquality().hash(_comments),
+      const DeepCollectionEquality().hash(_allComments));
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +374,9 @@ abstract class _RecipeState extends RecipeState {
       final RecipeModel? selectedRecipe,
       final String selectedCategory,
       final ProfileModel? profile,
-      final List<RecipeModel> favoriteRecipes}) = _$RecipeStateImpl;
+      final List<RecipeModel> favoriteRecipes,
+      final List<CommentsModel> comments,
+      final List<CommentsModel> allComments}) = _$RecipeStateImpl;
   _RecipeState._() : super._();
 
   @override
@@ -338,6 +393,10 @@ abstract class _RecipeState extends RecipeState {
   ProfileModel? get profile;
   @override
   List<RecipeModel> get favoriteRecipes;
+  @override
+  List<CommentsModel> get comments;
+  @override
+  List<CommentsModel> get allComments;
   @override
   @JsonKey(ignore: true)
   _$$RecipeStateImplCopyWith<_$RecipeStateImpl> get copyWith =>

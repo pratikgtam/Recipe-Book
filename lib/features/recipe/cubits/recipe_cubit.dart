@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_book/features/profile/models/profile_model.dart';
 import 'package:recipe_book/features/recipe/cubits/recipe_state.dart';
+import 'package:recipe_book/features/recipe/models/comments_model.dart';
 import 'package:recipe_book/features/recipe/models/recipe_model.dart';
 import 'package:recipe_book/shared/app_constants.dart';
 import 'package:recipe_book/shared/firebase_repository.dart';
@@ -101,5 +103,55 @@ class RecipeCubit extends Cubit<RecipeState> {
 
   void clearFavourite() {
     emit(state.copyWith(favoriteRecipes: []));
+  }
+
+  void addComment(String comment, ProfileModel? user) {
+    final comments = state.allComments;
+    final newComment = CommentsModel(
+      id: DateTime.now().toString(),
+      user: user,
+      recipeId: state.selectedRecipe?.id ?? '',
+      comment: comment,
+      createdAt: DateTime.now(),
+    );
+    final updatedComments = [
+      ...comments,
+      newComment,
+    ];
+    emit(state.copyWith(
+      allComments: updatedComments,
+    ));
+    getComments();
+  }
+
+  void deleteComment(CommentsModel comment) {
+    final comments = state.allComments;
+    final updatedComments = comments.where((c) => c.id != comment.id).toList();
+    emit(state.copyWith(
+      allComments: updatedComments,
+    ));
+    getComments();
+  }
+
+  void editComment(CommentsModel comment, String newComment) {
+    final comments = state.allComments;
+    final updatedComments = comments.map((c) {
+      if (c.id == comment.id) {
+        return c.copyWith(comment: newComment);
+      }
+      return c;
+    }).toList();
+    emit(state.copyWith(
+      allComments: updatedComments,
+    ));
+    getComments();
+  }
+
+  void getComments() {
+    final recipe = state.selectedRecipe;
+    final comments =
+        state.allComments.where((c) => c.recipeId == recipe?.id).toList();
+    comments.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+    emit(state.copyWith(comments: comments));
   }
 }

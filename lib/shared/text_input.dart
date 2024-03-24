@@ -18,6 +18,8 @@ class TextInput extends StatelessWidget {
     this.suffixText,
     this.readOnly = false,
     this.onChanged,
+    this.suffixIcon,
+    this.controller,
   });
   final Null Function(dynamic value)? onChanged;
 
@@ -34,6 +36,8 @@ class TextInput extends StatelessWidget {
   final int? maxLines;
   final bool autofocus;
   final bool readOnly;
+  final Widget? suffixIcon;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +56,8 @@ class TextInput extends StatelessWidget {
             ),
           ),
         FormBuilderTextField(
+          scrollPadding: const EdgeInsets.all(100),
+          controller: controller,
           autofocus: autofocus,
           textInputAction: textInputAction,
           initialValue: initialValue,
@@ -67,6 +73,7 @@ class TextInput extends StatelessWidget {
           keyboardType: textInputType,
           decoration: InputDecoration(
             suffixText: suffixText,
+            suffixIcon: suffixIcon,
             contentPadding: const EdgeInsets.all(16),
             hintText: hintText,
             hintStyle: TextStyle(

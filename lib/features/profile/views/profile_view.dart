@@ -25,73 +25,76 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     final profile = context.watch<ProfileCubit>().state.profile.result;
+
     final imageUrl = profile?.profilePic ?? '';
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 16),
-          GestureDetector(
-            onTap: () {
-              context.read<ProfileCubit>().updateProfilePic();
-            },
-            child: ProfilePic(imageUrl: imageUrl),
-          ),
-          const SizedBox(height: 32),
-          _ListTile(
-            title: 'My Profile',
-            onTap: () {
-              AppRoutes(context).push(ProfileDetailView(profile: profile));
-            },
-            icon: Icons.person_outline,
-          ),
-          _ListTile(
-            title: 'Edit Profile',
-            onTap: () {
-              AppRoutes(context).push(const EditProfileView());
-            },
-            icon: Icons.edit,
-          ),
-          _ListTile(
-            title: 'My Recipes',
-            onTap: () {
-              AppRoutes(context).push(const MyRecipe());
-            },
-            icon: Icons.food_bank_outlined,
-          ),
-          _ListTile(
-            title: 'Favorites',
-            onTap: () {
-              AppRoutes(context).push(const FavouriteRecipeScreen());
-            },
-            icon: Icons.favorite_outline,
-          ),
-          _ListTile(
-            title: 'Notifications',
-            onTap: () {},
-            icon: Icons.notifications_none,
-          ),
-          _ListTile(
-            title: 'Help',
-            onTap: () {},
-            icon: Icons.help_outline,
-          ),
-          _ListTile(
-            title: 'About',
-            onTap: () {},
-            icon: Icons.info_outline,
-          ),
-          _ListTile(
-            title: 'Logout',
-            onTap: () {
-              context.read<AuthCubit>().logout();
-              AppRoutes(context).pushAndRemoveUntil(const LoginView());
-            },
-            icon: Icons.logout,
-          ),
-          const SizedBox(height: 16),
-        ],
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                context.read<ProfileCubit>().updateProfilePic();
+              },
+              child: ProfilePic(imageUrl: imageUrl),
+            ),
+            const SizedBox(height: 32),
+            _ListTile(
+              title: 'My Profile',
+              onTap: () {
+                AppRoutes(context).push(ProfileDetailView(profile: profile));
+              },
+              icon: Icons.person_outline,
+            ),
+            _ListTile(
+              title: 'Edit Profile',
+              onTap: () {
+                AppRoutes(context).push(const EditProfileView());
+              },
+              icon: Icons.edit,
+            ),
+            _ListTile(
+              title: 'My Recipes',
+              onTap: () {
+                AppRoutes(context).push(const MyRecipe());
+              },
+              icon: Icons.food_bank_outlined,
+            ),
+            _ListTile(
+              title: 'Favorites',
+              onTap: () {
+                AppRoutes(context).push(const FavouriteRecipeScreen());
+              },
+              icon: Icons.favorite_outline,
+            ),
+            _ListTile(
+              title: 'Notifications',
+              onTap: () {},
+              icon: Icons.notifications_none,
+            ),
+            _ListTile(
+              title: 'Help',
+              onTap: () {},
+              icon: Icons.help_outline,
+            ),
+            _ListTile(
+              title: 'About',
+              onTap: () {},
+              icon: Icons.info_outline,
+            ),
+            _ListTile(
+              title: 'Logout',
+              onTap: () {
+                context.read<AuthCubit>().logout();
+                AppRoutes(context).pushAndRemoveUntil(const LoginView());
+              },
+              icon: Icons.logout,
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
@@ -101,9 +104,11 @@ class ProfilePic extends StatelessWidget {
   const ProfilePic({
     super.key,
     required this.imageUrl,
+    this.size = 100,
   });
 
   final String imageUrl;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -120,16 +125,16 @@ class ProfilePic extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
               child: Image.network(
                 imageUrl,
-                width: 100,
-                height: 100,
+                width: size,
+                height: size,
                 fit: BoxFit.cover,
               ),
             )
-          : const Padding(
-              padding: EdgeInsets.all(8.0),
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Icon(
                 Icons.person_outline,
-                size: 80,
+                size: 0.8 * size,
               ),
             ),
     );
