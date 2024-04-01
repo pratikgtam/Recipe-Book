@@ -154,4 +154,44 @@ class RecipeCubit extends Cubit<RecipeState> {
     comments.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
     emit(state.copyWith(comments: comments));
   }
+
+  void likeRecipe(RecipeModel? recipe) {
+    final recipeId = recipe?.id;
+    if (recipeId == null) return;
+    final likedRecipeIds = state.likedRecipeIds;
+    final dislikedRecipeIds = state.dislikedRecipeIds;
+    if (likedRecipeIds.contains(recipeId)) {
+      final updatedLikedRecipeIds =
+          likedRecipeIds.where((id) => id != recipeId).toList();
+      emit(state.copyWith(likedRecipeIds: updatedLikedRecipeIds));
+    } else {
+      final updatedLikedRecipeIds = [...likedRecipeIds, recipeId];
+      emit(state.copyWith(likedRecipeIds: updatedLikedRecipeIds));
+      if (dislikedRecipeIds.contains(recipeId)) {
+        final updatedDislikedRecipeIds =
+            dislikedRecipeIds.where((id) => id != recipeId).toList();
+        emit(state.copyWith(dislikedRecipeIds: updatedDislikedRecipeIds));
+      }
+    }
+  }
+
+  void dislikeRecipe(RecipeModel? recipe) {
+    final recipeId = recipe?.id;
+    if (recipeId == null) return;
+    final likedRecipeIds = state.likedRecipeIds;
+    final dislikedRecipeIds = state.dislikedRecipeIds;
+    if (dislikedRecipeIds.contains(recipeId)) {
+      final updatedDislikedRecipeIds =
+          dislikedRecipeIds.where((id) => id != recipeId).toList();
+      emit(state.copyWith(dislikedRecipeIds: updatedDislikedRecipeIds));
+    } else {
+      final updatedDislikedRecipeIds = [...dislikedRecipeIds, recipeId];
+      emit(state.copyWith(dislikedRecipeIds: updatedDislikedRecipeIds));
+      if (likedRecipeIds.contains(recipeId)) {
+        final updatedLikedRecipeIds =
+            likedRecipeIds.where((id) => id != recipeId).toList();
+        emit(state.copyWith(likedRecipeIds: updatedLikedRecipeIds));
+      }
+    }
+  }
 }

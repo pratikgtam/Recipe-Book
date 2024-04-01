@@ -35,6 +35,11 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
     final recipe = state.selectedRecipe;
     final profile = state.profile;
     final comments = state.comments;
+    final likedRecipeIds = state.likedRecipeIds;
+    final dislikedRecipeIds = state.dislikedRecipeIds;
+
+    bool isLiked = likedRecipeIds.contains(recipe?.id);
+    bool isDisliked = dislikedRecipeIds.contains(recipe?.id);
 
     return CustomScaffold(
       title: recipe?.name,
@@ -86,7 +91,29 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    context.read<RecipeCubit>().likeRecipe(recipe);
+                  },
+                  icon: Icon(
+                    Icons.thumb_up,
+                    color: isLiked ? Colors.blue : Colors.grey,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    context.read<RecipeCubit>().dislikeRecipe(recipe);
+                  },
+                  icon: Icon(
+                    Icons.thumb_down,
+                    color: isDisliked ? Colors.red : Colors.grey,
+                  ),
+                ),
+              ],
+            ),
             Wrap(
                 spacing: 8,
                 children: List.generate(

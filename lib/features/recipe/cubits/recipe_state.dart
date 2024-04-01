@@ -20,6 +20,8 @@ class RecipeState with _$RecipeState {
     @Default([]) List<RecipeModel> favoriteRecipes,
     @Default([]) List<CommentsModel> comments,
     @Default([]) List<CommentsModel> allComments,
+    @Default([]) List<String> likedRecipeIds,
+    @Default([]) List<String> dislikedRecipeIds,
   }) = _RecipeState;
 
   RecipeState._();

@@ -4,6 +4,7 @@ import 'package:recipe_book/features/auth/cubits/auth_cubit.dart';
 import 'package:recipe_book/features/auth/views/login_view.dart';
 import 'package:recipe_book/features/profile/cubits/profile_cubit.dart';
 import 'package:recipe_book/features/profile/views/edit_profile_view.dart';
+import 'package:recipe_book/features/profile/views/feeback_screen.dart';
 import 'package:recipe_book/features/profile/views/profile_detail_view.dart';
 import 'package:recipe_book/features/recipe/ui/favourite_recipe.dart';
 import 'package:recipe_book/features/recipe/ui/my_recipe.dart';
@@ -70,19 +71,11 @@ class _ProfileViewState extends State<ProfileView> {
               icon: Icons.favorite_outline,
             ),
             _ListTile(
-              title: 'Notifications',
-              onTap: () {},
-              icon: Icons.notifications_none,
-            ),
-            _ListTile(
-              title: 'Help',
-              onTap: () {},
-              icon: Icons.help_outline,
-            ),
-            _ListTile(
-              title: 'About',
-              onTap: () {},
-              icon: Icons.info_outline,
+              title: 'Feedback',
+              onTap: () {
+                AppRoutes(context).push(const FeedbackScreen());
+              },
+              icon: Icons.feedback_outlined,
             ),
             _ListTile(
               title: 'Logout',
