@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_book/features/auth/views/login_view.dart';
+import 'package:recipe_book/features/onboarding/views/onboarding_view.dart';
 import 'package:recipe_book/features/recipe/ui/welcome.dart';
 import 'package:recipe_book/firebase_options.dart';
 import 'package:recipe_book/global_providers/global_providers.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: getTheme(),
         home: FirebaseAuth.instance.currentUser != null
             ? const Welcome()
-            : const LoginView(),
+            : const OnboardingView(),
       ),
     );
   }
